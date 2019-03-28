@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">GTJD</string>
+    <string name="action_settings">Settings</string>
+    <string name="todo1">TODO</string>
+    <string name="GTJD">GTJD</string>
+    <string name="Get_The_Job_Done">Get The Job Done!</string>
+    <string name="todo2">TODO</string>
+    <string name="opening">welcome to GTJD system please log in, if you do not have account press sign in</string>
+    <string name="mail">Mail</string>
+    <string name="password">Password</string>
+    <string name="todo3">TODO</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_register_screen">registerScreen</string>
+</resources>
+
