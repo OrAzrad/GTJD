@@ -114,7 +114,7 @@
             tools:targetApi="o" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/Password"
             android:layout_width="304dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -130,16 +130,16 @@
             tools:ignore="LabelFor,MissingConstraints,UnusedAttribute" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/Regisrer"
             android:layout_width="120dp"
             android:layout_height="59dp"
             android:layout_marginTop="100dp"
             android:text="Register"
-            app:layout_constraintStart_toStartOf="@+id/editText4"
-            app:layout_constraintTop_toTopOf="@+id/editText4" />
+            app:layout_constraintStart_toStartOf="@+id/Confirm_password"
+            app:layout_constraintTop_toTopOf="@+id/Confirm_password" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/Confirm_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -148,10 +148,10 @@
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="@+id/editText3"
+            app:layout_constraintEnd_toEndOf="@+id/Password"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/editText3"
-            app:layout_constraintTop_toBottomOf="@+id/editText3"
+            app:layout_constraintStart_toStartOf="@+id/Password"
+            app:layout_constraintTop_toBottomOf="@+id/Password"
             tools:ignore="LabelFor,MissingConstraints,UnusedAttribute" />
 
         <TextView
