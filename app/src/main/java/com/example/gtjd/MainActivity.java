@@ -13,25 +13,26 @@ import android.content.Intent;
 
 
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity implements  View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        findViewById(R.id.textViewSignUp).setOnClickListener(this);
 
+    }
 
-               // Toast.makeText(MainActivity.this, "Or KATAV",Toast.LENGTH_LONG).show();
-                //
-                Intent intent = new Intent(MainActivity.this, registerScreen.class);
-                startActivity(intent);
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.textViewSignUp:
 
-            }
-        });
+                startActivity(new Intent(this, registerScreen.class));
+                break;
+        }
 
     }
 }

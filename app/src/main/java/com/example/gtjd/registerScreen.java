@@ -13,6 +13,31 @@ public class registerScreen extends AppCompatActivity {
     private EditText confirm_password;
 
 
+    public String GetString(EditText str){
+
+        String str_to_return = "";
+        str_to_return = str.getText().toString();
+        return str_to_return;
+    }
+
+    public void validation(EditText password, EditText confirm_password) {
+
+       String password_str =   GetString(password);
+       String confirm_password_str =   GetString(confirm_password);
+
+
+
+        if (password_str.length() < 7){
+            password.setError("Password must contain at least 7 characters");
+        }
+        if (!password_str.equals(confirm_password_str)) {
+            confirm_password.setError("Password's are different");
+        }
+
+
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,15 +50,8 @@ public class registerScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                validation(password, confirm_password);
 
-                if (password.getText().toString().equals(confirm_password.getText().toString())) {
-
-                    Toast.makeText(registerScreen.this, "Or KATAV",Toast.LENGTH_LONG).show();
-
-                }
-                else{
-                    confirm_password.setError("Error");
-                }
 
             }
         });
