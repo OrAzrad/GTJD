@@ -11,5 +11,6 @@
     <string name="todo3">TODO</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_activity_register_screen">registerScreen</string>
+    <string name="title_activity_create_profile">CreateProfile</string>
 </resources>
 

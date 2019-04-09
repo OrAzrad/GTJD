@@ -81,9 +81,9 @@
             tools:text="Get The Job Done!" />
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/editTextUserName"
             android:layout_width="299dp"
-            android:layout_height="57dp"
+            android:layout_height="52dp"
             android:layout_marginTop="128dp"
             android:ems="10"
             android:hint="Enter user Name"
@@ -97,24 +97,24 @@
             tools:targetApi="o" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/editTextEmail"
             android:layout_width="299dp"
             android:layout_height="57dp"
             android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="Enter your Mail"
             android:importantForAutofill="no"
-            android:inputType="textPersonName"
+            android:inputType="textEmailAddress"
             android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="@+id/editText1"
+            app:layout_constraintEnd_toEndOf="@+id/editTextUserName"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/editText1"
-            app:layout_constraintTop_toBottomOf="@+id/editText1"
+            app:layout_constraintStart_toStartOf="@+id/editTextUserName"
+            app:layout_constraintTop_toBottomOf="@+id/editTextUserName"
             tools:ignore="LabelFor,MissingConstraints"
             tools:targetApi="o" />
 
         <EditText
-            android:id="@+id/Password"
+            android:id="@+id/editTextPassword"
             android:layout_width="304dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -123,10 +123,10 @@
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="@+id/editText2"
+            app:layout_constraintEnd_toEndOf="@+id/editTextEmail"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/editText2"
-            app:layout_constraintTop_toBottomOf="@+id/editText2"
+            app:layout_constraintStart_toStartOf="@+id/editTextEmail"
+            app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
             tools:ignore="LabelFor,MissingConstraints,UnusedAttribute" />
 
         <Button
@@ -135,12 +135,12 @@
             android:layout_height="56dp"
             android:layout_marginTop="100dp"
             android:text="Register"
-            app:layout_constraintEnd_toEndOf="@+id/Confirm_password"
-            app:layout_constraintStart_toStartOf="@+id/Confirm_password"
-            app:layout_constraintTop_toTopOf="@+id/Confirm_password" />
+            app:layout_constraintEnd_toEndOf="@+id/editTextConfirm_password"
+            app:layout_constraintStart_toStartOf="@+id/editTextConfirm_password"
+            app:layout_constraintTop_toTopOf="@+id/editTextConfirm_password" />
 
         <EditText
-            android:id="@+id/Confirm_password"
+            android:id="@+id/editTextConfirm_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -149,10 +149,10 @@
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="@+id/Password"
+            app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/Password"
-            app:layout_constraintTop_toBottomOf="@+id/Password"
+            app:layout_constraintStart_toStartOf="@+id/editTextPassword"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
             tools:ignore="LabelFor,MissingConstraints,UnusedAttribute" />
 
         <TextView
@@ -167,6 +167,20 @@
             app:layout_constraintTop_toTopOf="@+id/textView2"
             tools:ignore="HardcodedText,MissingConstraints"
             tools:text="welcome to GTJD system please log in" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="108dp"
+            android:layout_height="88dp"
+            android:layout_marginTop="56dp"
+            app:layout_constraintEnd_toEndOf="@+id/editTextEmail"
+            app:layout_constraintHorizontal_bias="0.471"
+            app:layout_constraintStart_toStartOf="@+id/editTextEmail"
+            app:layout_constraintTop_toTopOf="@+id/editTextEmail"
+            android:visibility="gone"
+            tools:ignore="MissingConstraints" />
+
+
     </android.support.constraint.ConstraintLayout>
 
 
