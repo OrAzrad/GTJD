@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
                 if(task.isSuccessful())
                 {
                     progress_bar.setVisibility(View.GONE);
-                    Intent intent = new Intent(MainActivity.this, CreateProfile.class);
+                    Intent intent = new Intent(MainActivity.this, missions.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
