@@ -26,37 +26,50 @@
         android:id="@+id/editTextMissionDescription"
         android:layout_width="414dp"
         android:layout_height="155dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Write a short description about your mission"
         android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="@+id/editTextMissionName"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextMissionName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMissionName" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextMissionDeadline"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="@+id/editTextMissionDeadline"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMissionDeadline" />
 
     <EditText
         android:id="@+id/editTextMissionDeadline"
         android:layout_width="399dp"
         android:layout_height="68dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Enter mission Deadline"
         android:inputType="date"
-        app:layout_constraintEnd_toEndOf="@+id/editTextMissionDescription"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="@+id/editTextMissionDescription"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMissionDescription"
+        app:layout_constraintEnd_toEndOf="@+id/editTextMissionHours"
+        app:layout_constraintStart_toStartOf="@+id/editTextMissionHours"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMissionHours"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editTextMissionHours"
+        android:layout_width="399dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Enter mission amount of hours"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/editTextMissionName"
+        app:layout_constraintStart_toStartOf="@+id/editTextMissionName"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMissionName"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/buttonCreateMission"
-        android:layout_width="390dp"
+        android:layout_width="391dp"
         android:layout_height="70dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="32dp"
         android:text="Create mission"
-        app:layout_constraintEnd_toEndOf="@+id/editTextMissionDeadline"
-        app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="@+id/editTextMissionDeadline"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMissionDeadline" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextMissionDescription"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="@+id/editTextMissionDescription"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMissionDescription" />
+
 </android.support.constraint.ConstraintLayout>
