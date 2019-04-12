@@ -23,17 +23,18 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="0dp" />
 
-    <ImageView
-        android:layout_width="800dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:src="@drawable/screen_margins"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.591"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="ContentDescription,MissingConstraints" />
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="800dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/screen_margins"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.591"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="ContentDescription,MissingConstraints" />
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="60dp"
@@ -79,6 +80,20 @@
         app:layout_constraintTop_toTopOf="@+id/textViewTitle"
         tools:ignore="MissingConstraints"
         tools:text="Get The Job Done!" />
+
+        <Button
+            android:id="@+id/buttonAddMission"
+            android:layout_width="475dp"
+            android:layout_height="79dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="168dp"
+            android:text="Add mission"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 
