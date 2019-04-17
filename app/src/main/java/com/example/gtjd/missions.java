@@ -20,6 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class missions extends AppCompatActivity implements View.OnClickListener {
 
     DatabaseReference databaseMissions;
+    String email;
+
     public String GetString(EditText str){
 
         String str_to_return;
@@ -58,7 +60,7 @@ public class missions extends AppCompatActivity implements View.OnClickListener 
                 if(mission_title_str.length() == 0 ||
                         mission_hours_str.length() == 0 || mission_deadline_str.length() == 0 )
                 {
-                    Toast.makeText(getApplicationContext(), "Email is already registered", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "One of the fields is empty", Toast.LENGTH_SHORT).show();
                 }
                 else
                     {
@@ -80,6 +82,7 @@ public class missions extends AppCompatActivity implements View.OnClickListener 
         Toast.makeText(getApplicationContext(), "Mission Added", Toast.LENGTH_SHORT).show();
 
 
+
     }
 
 
@@ -91,6 +94,8 @@ public class missions extends AppCompatActivity implements View.OnClickListener 
 
         findViewById(R.id.buttonAddMission).setOnClickListener(this);
         databaseMissions = FirebaseDatabase.getInstance().getReference("missions");
+
+        email = getIntent().getStringExtra("Email to pass");
 
 
 

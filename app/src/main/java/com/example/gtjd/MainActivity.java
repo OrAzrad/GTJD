@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     FirebaseAuth mAuth;
     EditText email,password;
     ProgressBar progress_bar;
+    String email_to_pass;
 
     public String GetString(EditText str){
 
@@ -106,7 +107,10 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.textViewSignUp:
-                startActivity(new Intent(this, registerScreen.class));
+                Intent intent = new Intent(this, registerScreen.class);
+                email_to_pass = email.getText().toString();
+                intent.putExtra("Email to pass", email_to_pass);
+                startActivity(intent);
                 break;
 
             case R.id.buttonLogin:
