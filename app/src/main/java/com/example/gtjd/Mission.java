@@ -3,7 +3,7 @@ package com.example.gtjd;
 public class Mission
 
 {
-
+    String email;
     String misiion_title;
     String mission_hours;
     String mission_deadline;
@@ -15,14 +15,17 @@ public class Mission
 
     }
 
-    public Mission(String misiion_title, String mission_hours, String mission_deadline, String mission_description,String id) {
+    public Mission(String email, String misiion_title, String mission_hours, String mission_deadline, String mission_description,String id) {
+        this.email = email;
         this.misiion_title = misiion_title;
         this.mission_hours = mission_hours;
         this.mission_deadline = mission_deadline;
         this.mission_description = mission_description;
         this.id = id;
     }
-
+    public String getEmail() {
+        return email;
+    }
     public String getMisiion_title() {
         return misiion_title;
     }

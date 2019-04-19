@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     FirebaseAuth mAuth;
     EditText email,password;
     ProgressBar progress_bar;
-    String email_to_pass;
 
     public String GetString(EditText str){
 
@@ -36,10 +35,10 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         return str_to_return;
     }
 
-    private void Login(EditText email, EditText password)
+    private void Login(final EditText email, EditText password)
     {
 
-        String email_str = GetString(email);
+        final String email_str = GetString(email);
         String password_str = GetString(password);
 
         if(email_str.length() == 0)
@@ -69,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
                     progress_bar.setVisibility(View.GONE);
                     Intent intent = new Intent(MainActivity.this, missions.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("message_key", email_str);
                     startActivity(intent);
                 }
                 else
@@ -108,8 +108,6 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         switch(v.getId()){
             case R.id.textViewSignUp:
                 Intent intent = new Intent(this, registerScreen.class);
-                email_to_pass = email.getText().toString();
-                intent.putExtra("Email to pass", email_to_pass);
                 startActivity(intent);
                 break;
 

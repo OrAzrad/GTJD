@@ -101,7 +101,8 @@
             app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
             app:layout_constraintHorizontal_bias="0.666"
             app:layout_constraintStart_toStartOf="@+id/editTextPassword"
-            app:layout_constraintTop_toTopOf="@+id/editTextPassword" />
+            app:layout_constraintTop_toTopOf="@+id/editTextPassword"
+            android:textSize="17sp"/>
 
         <TextView
             android:id="@+id/textView2"

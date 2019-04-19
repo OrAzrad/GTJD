@@ -76,7 +76,7 @@ public class missions extends AppCompatActivity implements View.OnClickListener 
     private void add_mission(String mission_title, String mission_hours, String mission_deadline, String mission_description)
     {
         String id = databaseMissions.push().getKey();
-        Mission mission = new Mission(mission_title, mission_hours, mission_deadline, mission_description, id);
+        Mission mission = new Mission(email, mission_title, mission_hours, mission_deadline, mission_description, id);
         databaseMissions.child(id).setValue(mission);
 
         Toast.makeText(getApplicationContext(), "Mission Added", Toast.LENGTH_SHORT).show();
@@ -92,10 +92,14 @@ public class missions extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_missions);
 
+        email = getIntent().getStringExtra("message_key");
+
         findViewById(R.id.buttonAddMission).setOnClickListener(this);
         databaseMissions = FirebaseDatabase.getInstance().getReference("missions");
 
-        email = getIntent().getStringExtra("Email to pass");
+
+        Toast.makeText(getApplicationContext(), email, Toast.LENGTH_SHORT).show();
+
 
 
 

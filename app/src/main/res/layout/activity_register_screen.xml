@@ -142,7 +142,8 @@
             android:text="Register"
             app:layout_constraintEnd_toEndOf="@+id/editTextConfirm_password"
             app:layout_constraintStart_toStartOf="@+id/editTextConfirm_password"
-            app:layout_constraintTop_toTopOf="@+id/editTextConfirm_password" />
+            app:layout_constraintTop_toTopOf="@+id/editTextConfirm_password"
+            android:textSize="17sp"/>
 
         <EditText
             android:id="@+id/editTextConfirm_password"
