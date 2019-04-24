@@ -71,6 +71,7 @@
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="@+id/editTextMissionDescription"
         app:layout_constraintTop_toBottomOf="@+id/editTextMissionDescription"
-        android:textSize="17sp"/>
+        android:textSize="17sp"
+        android:background="@drawable/button_background"/>
 
 </android.support.constraint.ConstraintLayout>
