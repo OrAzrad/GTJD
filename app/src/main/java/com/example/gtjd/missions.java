@@ -112,7 +112,7 @@ public class missions extends AppCompatActivity implements View.OnClickListener 
         missions_list = new ArrayList<>();
 
 
-        Toast.makeText(getApplicationContext(), email, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Hello: "+email, Toast.LENGTH_SHORT).show();
 
 
     }
@@ -133,8 +133,6 @@ public class missions extends AppCompatActivity implements View.OnClickListener 
 
                     if(mission.getEmail().equals(email))
                     {
-                        Toast.makeText(getApplicationContext(), "NO NO NO", Toast.LENGTH_SHORT).show();
-
                         missions_list.add(mission);
                     }
                 }

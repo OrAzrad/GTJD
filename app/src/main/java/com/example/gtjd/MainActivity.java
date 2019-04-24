@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 
     public String GetString(EditText str){
 
-        String str_to_return = "";
+        String str_to_return;
         str_to_return = str.getText().toString();
         return str_to_return;
     }
