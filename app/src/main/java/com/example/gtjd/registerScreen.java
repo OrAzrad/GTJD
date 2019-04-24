@@ -30,7 +30,7 @@ public class registerScreen extends AppCompatActivity {
         return str_to_return;
     }
 
-    public void validation(EditText user_name, EditText email, EditText password, EditText confirm_password, final ProgressBar progress_bar) {
+    public void Register(EditText user_name, EditText email, EditText password, EditText confirm_password, final ProgressBar progress_bar) {
 
 
 
@@ -108,7 +108,7 @@ public class registerScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                validation(user_name, email, password, confirm_password, progress_bar);
+                Register(user_name, email, password, confirm_password, progress_bar);
 
 
             }

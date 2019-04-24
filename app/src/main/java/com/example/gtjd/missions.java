@@ -74,7 +74,7 @@ public class missions extends AppCompatActivity implements View.OnClickListener 
                 }
                 else
                     {
-                    add_mission(mission_title_str, mission_hours_str, mission_deadline_str, mission_description_str);
+                    AddMission(mission_title_str, mission_hours_str, mission_deadline_str, mission_description_str);
                     }
             }
         });
@@ -83,7 +83,7 @@ public class missions extends AppCompatActivity implements View.OnClickListener 
 
     }
 
-    private void add_mission(String mission_title, String mission_hours, String mission_deadline, String mission_description)
+    private void AddMission(String mission_title, String mission_hours, String mission_deadline, String mission_description)
     {
         String id = databaseMissions.push().getKey();
         Mission mission = new Mission(email, mission_title, mission_hours, mission_deadline, mission_description, id);
