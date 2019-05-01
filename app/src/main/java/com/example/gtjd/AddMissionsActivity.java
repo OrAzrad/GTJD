@@ -1,20 +1,18 @@
 package com.example.gtjd;
 
-import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class missions extends AppCompatActivity implements View.OnClickListener {
+public class AddMissionsActivity extends AppCompatActivity implements View.OnClickListener {
 
     DatabaseReference databaseMissions;
     String email;
@@ -105,7 +103,7 @@ public class missions extends AppCompatActivity implements View.OnClickListener 
         email = getIntent().getStringExtra("message_key");
 
         findViewById(R.id.buttonAddMission).setOnClickListener(this);
-        databaseMissions = FirebaseDatabase.getInstance().getReference("missions");
+        databaseMissions = FirebaseDatabase.getInstance().getReference("AddMissionsActivity");
 
 
         list_of_missions = (ListView) findViewById(R.id.listViewOfMissions);
@@ -113,6 +111,17 @@ public class missions extends AppCompatActivity implements View.OnClickListener 
 
 
         Toast.makeText(getApplicationContext(), "Hello: "+email, Toast.LENGTH_SHORT).show();
+
+        list_of_missions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Mission mission = missions_list.get(position);
+
+                Intent intent = new Intent(getApplicationContext(), MissionDeatialsActivity.class);
+
+                startActivity(intent);
+            }
+        });
 
 
     }
@@ -137,7 +146,7 @@ public class missions extends AppCompatActivity implements View.OnClickListener 
                     }
                 }
 
-                MissionsList adapter = new MissionsList(missions.this ,missions_list);
+                MissionsList adapter = new MissionsList(AddMissionsActivity.this ,missions_list);
                 list_of_missions.setAdapter(adapter);
             }
 

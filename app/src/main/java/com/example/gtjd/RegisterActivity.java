@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 
-public class registerScreen extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     private EditText user_name, email, password, confirm_password;
     ProgressBar progress_bar;

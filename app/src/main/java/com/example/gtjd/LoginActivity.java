@@ -1,16 +1,10 @@
 package com.example.gtjd;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Patterns;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -22,7 +16,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class MainActivity extends AppCompatActivity implements  View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements  View.OnClickListener {
 
     FirebaseAuth mAuth;
     EditText email,password;
@@ -66,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
                 if(task.isSuccessful())
                 {
                     progress_bar.setVisibility(View.GONE);
-                    Intent intent = new Intent(MainActivity.this, missions.class);
+                    Intent intent = new Intent(LoginActivity.this, AddMissionsActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("message_key", email_str);
                     startActivity(intent);
@@ -107,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.textViewSignUp:
-                Intent intent = new Intent(this, registerScreen.class);
+                Intent intent = new Intent(this, RegisterActivity.class);
                 startActivity(intent);
                 break;
 

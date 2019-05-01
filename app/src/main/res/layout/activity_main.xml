@@ -5,7 +5,7 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -102,7 +102,7 @@
             app:layout_constraintHorizontal_bias="0.666"
             app:layout_constraintStart_toStartOf="@+id/editTextPassword"
             app:layout_constraintTop_toTopOf="@+id/editTextPassword"
-            android:textSize="17sp"
+            android:textSize="20sp"
             android:background="@drawable/button_background"/>
 
         <TextView
