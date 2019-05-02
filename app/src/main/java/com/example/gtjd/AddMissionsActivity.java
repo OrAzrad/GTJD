@@ -2,7 +2,6 @@ package com.example.gtjd;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
@@ -25,8 +24,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -37,12 +34,13 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
     private static final String TAG = "AddMissionsActivity";
     private static String date;
 
-    private TextView display_Date;
     private DatePickerDialog.OnDateSetListener date_set_listener;
     DatabaseReference databaseMissions;
     String email;
     ListView list_of_missions;
     List<Mission> missions_list;
+
+    static String deadline;
 
     public String GetString(EditText str){
 
@@ -61,7 +59,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
     }
 
 
-    private void add_mission_screen(final String deadline)
+    private void add_mission_screen()
     {
         AlertDialog.Builder create_mission_screen = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -72,18 +70,26 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         final AlertDialog alertDialog = create_mission_screen.create();
         alertDialog.show();
 
-        Button create_mission =  create_mission_view.findViewById(R.id.buttonCreateMission);
+        final Button create_mission =  create_mission_view.findViewById(R.id.buttonCreateMission);
         final EditText mission_title =  create_mission_view.findViewById(R.id.editTextMissionName);
         final EditText mission_hours =  create_mission_view.findViewById(R.id.editTextMissionHours);
         final EditText mission_description = create_mission_view.findViewById(R.id.editTextMissionDescription);
 
+
+
+        //"final TextView display_Date = create_mission_view.findViewById(R.id.textViewEnterDeadline);
+        //display_Date.setOnClickListener(new View.OnClickListener() {
+          //  public void onClick(View v) {
+             //   deadline = pick_date(display_Date);
+         //   }
+        //});
 
         create_mission.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String mission_title_str = GetString(mission_title);
                 String mission_hours_str = GetString(mission_hours);
-                String mission_deadline_str = deadline;
+                String mission_deadline_str = "22-4-2020";
                 String mission_description_str = GetString(mission_description);
 
 
@@ -102,7 +108,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         });
     }
 
-    private void pick_date()
+    private String pick_date(final TextView display_date)
     {
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
@@ -114,6 +120,8 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
                 android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                 date_set_listener,
                 year,month,day);
+
+        date_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         date_dialog.show();
 
         date_set_listener = new DatePickerDialog.OnDateSetListener() {
@@ -121,16 +129,15 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
                 month = month+1;
-
-                Log.d(TAG, "On Date set: dd/mm/yy: " + dayOfMonth+"/"+ month+"/"+year);
+                Log.d("add_mission", "On Date set: dd/mm/yy: " + dayOfMonth+"/"+ month+"/"+year);
                 date = dayOfMonth+"/"+ month+"/"+year;
-                display_Date.setText(date);
-
+                display_date.setText(date);
 
             }
         };
 
 
+        return date;
     }
 
 
@@ -197,7 +204,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.buttonAddMission:
-                add_mission_screen((String) date);
+                add_mission_screen();
                 break;
 
         }
