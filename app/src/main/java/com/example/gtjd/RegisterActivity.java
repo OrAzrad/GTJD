@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText user_name, email, password, confirm_password;
+    private EditText email, password, confirm_password;
     ProgressBar progress_bar;
     private FirebaseAuth mAuth;
 
@@ -30,11 +30,10 @@ public class RegisterActivity extends AppCompatActivity {
         return str_to_return;
     }
 
-    public void Register(EditText user_name, EditText email, EditText password, EditText confirm_password, final ProgressBar progress_bar) {
+    public void Register(EditText email, EditText password, EditText confirm_password, final ProgressBar progress_bar) {
 
 
 
-        String user_name_str = GetString(user_name);
         String email_str = GetString(email);
         String password_str =   GetString(password);
         String confirm_password_str =   GetString(confirm_password);
@@ -96,7 +95,6 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-        user_name = findViewById(R.id.editTextUserName);
         email = findViewById(R.id.editTextEmail);
         password = findViewById(R.id.editTextPassword);
         confirm_password = findViewById(R.id.editTextConfirm_password);
@@ -108,7 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Register(user_name, email, password, confirm_password, progress_bar);
+                Register(email, password, confirm_password, progress_bar);
 
 
             }

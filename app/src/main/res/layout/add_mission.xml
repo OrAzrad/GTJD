@@ -30,22 +30,9 @@
         android:ems="10"
         android:hint="Write a short description about your mission"
         android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="@+id/editTextMissionDeadline"
-        app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toStartOf="@+id/editTextMissionDeadline"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMissionDeadline" />
-
-    <EditText
-        android:id="@+id/editTextMissionDeadline"
-        android:layout_width="399dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Enter mission Deadline"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="@+id/editTextMissionHours"
-        app:layout_constraintStart_toStartOf="@+id/editTextMissionHours"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMissionHours"
+        app:layout_constraintEnd_toEndOf="@+id/textViewEnterDeadline"
+        app:layout_constraintStart_toStartOf="@+id/textViewEnterDeadline"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEnterDeadline"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -73,5 +60,17 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextMissionDescription"
         android:textSize="20sp"
         android:background="@drawable/button_background"/>
+
+    <TextView
+        android:id="@+id/textViewEnterDeadline"
+        android:layout_width="402dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="36dp"
+        android:text="Click to enter Deadline"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/editTextMissionHours"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextMissionHours"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMissionHours" />
 
 </android.support.constraint.ConstraintLayout>

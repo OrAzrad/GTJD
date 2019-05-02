@@ -1,16 +1,22 @@
 package com.example.gtjd;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,12 +25,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
 public class AddMissionsActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = "AddMissionsActivity";
+    private static String date;
+
+    private TextView display_Date;
+    private DatePickerDialog.OnDateSetListener date_set_listener;
     DatabaseReference databaseMissions;
     String email;
     ListView list_of_missions;
@@ -37,7 +51,17 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         return str_to_return;
     }
 
-    private void add_mission_screen()
+    private void AddMission(String mission_title, String mission_hours, String mission_deadline, String mission_description)
+    {
+        String id = databaseMissions.push().getKey();
+        Mission mission = new Mission(email, mission_title, mission_hours, mission_deadline, mission_description, id);
+        databaseMissions.child(id).setValue(mission);
+
+        Toast.makeText(getApplicationContext(), "Mission Added", Toast.LENGTH_SHORT).show();
+    }
+
+
+    private void add_mission_screen(final String deadline)
     {
         AlertDialog.Builder create_mission_screen = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -45,13 +69,12 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
 
         create_mission_screen.setView(create_mission_view);
 
-        AlertDialog alertDialog = create_mission_screen.create();
+        final AlertDialog alertDialog = create_mission_screen.create();
         alertDialog.show();
 
         Button create_mission =  create_mission_view.findViewById(R.id.buttonCreateMission);
         final EditText mission_title =  create_mission_view.findViewById(R.id.editTextMissionName);
         final EditText mission_hours =  create_mission_view.findViewById(R.id.editTextMissionHours);
-        final EditText mission_deadline = create_mission_view.findViewById(R.id.editTextMissionDeadline);
         final EditText mission_description = create_mission_view.findViewById(R.id.editTextMissionDescription);
 
 
@@ -60,7 +83,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
             public void onClick(View v) {
                 String mission_title_str = GetString(mission_title);
                 String mission_hours_str = GetString(mission_hours);
-                String mission_deadline_str = GetString(mission_deadline);
+                String mission_deadline_str = deadline;
                 String mission_description_str = GetString(mission_description);
 
 
@@ -73,26 +96,42 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
                 else
                     {
                     AddMission(mission_title_str, mission_hours_str, mission_deadline_str, mission_description_str);
+                    alertDialog.dismiss();
                     }
             }
         });
-
-
-
     }
 
-    private void AddMission(String mission_title, String mission_hours, String mission_deadline, String mission_description)
+    private void pick_date()
     {
-        String id = databaseMissions.push().getKey();
-        Mission mission = new Mission(email, mission_title, mission_hours, mission_deadline, mission_description, id);
-        databaseMissions.child(id).setValue(mission);
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        int day = cal.get(Calendar.DAY_OF_MONTH);
 
-        Toast.makeText(getApplicationContext(), "Mission Added", Toast.LENGTH_SHORT).show();
+        DatePickerDialog date_dialog = new DatePickerDialog(
+                AddMissionsActivity.this,
+                android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                date_set_listener,
+                year,month,day);
+        date_dialog.show();
 
+        date_set_listener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                month = month+1;
+
+                Log.d(TAG, "On Date set: dd/mm/yy: " + dayOfMonth+"/"+ month+"/"+year);
+                date = dayOfMonth+"/"+ month+"/"+year;
+                display_Date.setText(date);
+
+
+            }
+        };
 
 
     }
-
 
 
     @Override
@@ -105,7 +144,6 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         findViewById(R.id.buttonAddMission).setOnClickListener(this);
         databaseMissions = FirebaseDatabase.getInstance().getReference("AddMissionsActivity");
 
-
         list_of_missions = (ListView) findViewById(R.id.listViewOfMissions);
         missions_list = new ArrayList<>();
 
@@ -117,9 +155,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Mission mission = missions_list.get(position);
 
-                Intent intent = new Intent(getApplicationContext(), MissionDeatialsActivity.class);
 
-                startActivity(intent);
             }
         });
 
@@ -161,8 +197,9 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.buttonAddMission:
-                add_mission_screen();
+                add_mission_screen((String) date);
                 break;
+
         }
 
     }
