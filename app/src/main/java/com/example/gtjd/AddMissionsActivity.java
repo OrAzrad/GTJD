@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -32,15 +33,16 @@ import java.util.List;
 public class AddMissionsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "AddMissionsActivity";
-    private static String date;
 
-    private DatePickerDialog.OnDateSetListener date_set_listener;
     DatabaseReference databaseMissions;
     String email;
     ListView list_of_missions;
     List<Mission> missions_list;
 
-    static String deadline;
+    private String deadline;
+    Calendar calendar;
+
+
 
     public String GetString(EditText str){
 
@@ -71,31 +73,54 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         alertDialog.show();
 
         final Button create_mission =  create_mission_view.findViewById(R.id.buttonCreateMission);
+        final Button pick_date = create_mission_view.findViewById(R.id.buttonPickDate);
         final EditText mission_title =  create_mission_view.findViewById(R.id.editTextMissionName);
         final EditText mission_hours =  create_mission_view.findViewById(R.id.editTextMissionHours);
         final EditText mission_description = create_mission_view.findViewById(R.id.editTextMissionDescription);
+        final TextView mission_deadline = create_mission_view.findViewById(R.id.textViewDeadline);
 
 
+        pick_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        //"final TextView display_Date = create_mission_view.findViewById(R.id.textViewEnterDeadline);
-        //display_Date.setOnClickListener(new View.OnClickListener() {
-          //  public void onClick(View v) {
-             //   deadline = pick_date(display_Date);
-         //   }
-        //});
+                calendar = Calendar.getInstance();
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                int month = calendar.get(Calendar.MONTH);
+                int year = calendar.get(Calendar.YEAR);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(AddMissionsActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+
+                                monthOfYear = monthOfYear+1;
+                                deadline =  dayOfMonth + "/" + monthOfYear + "/" + year;
+                                mission_deadline.setText("Selected date: " + deadline);
+
+
+                            }
+                        }, year, month, day);
+                datePickerDialog.show();
+
+            }
+        });
+
 
         create_mission.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String mission_title_str = GetString(mission_title);
                 String mission_hours_str = GetString(mission_hours);
-                String mission_deadline_str = "22-4-2020";
+                String mission_deadline_str = deadline;
                 String mission_description_str = GetString(mission_description);
 
 
 
                 if(mission_title_str.length() == 0 ||
-                        mission_hours_str.length() == 0 || mission_deadline_str.length() == 0 )
+                        mission_hours_str.length() == 0 )
                 {
                     Toast.makeText(getApplicationContext(), "One of the fields is empty", Toast.LENGTH_SHORT).show();
                 }
@@ -107,39 +132,6 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
             }
         });
     }
-
-    private String pick_date(final TextView display_date)
-    {
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-
-        DatePickerDialog date_dialog = new DatePickerDialog(
-                AddMissionsActivity.this,
-                android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                date_set_listener,
-                year,month,day);
-
-        date_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        date_dialog.show();
-
-        date_set_listener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-                month = month+1;
-                Log.d("add_mission", "On Date set: dd/mm/yy: " + dayOfMonth+"/"+ month+"/"+year);
-                date = dayOfMonth+"/"+ month+"/"+year;
-                display_date.setText(date);
-
-            }
-        };
-
-
-        return date;
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

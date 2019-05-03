@@ -26,13 +26,14 @@
         android:id="@+id/editTextMissionDescription"
         android:layout_width="414dp"
         android:layout_height="155dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Write a short description about your mission"
         android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="@+id/textViewEnterDeadline"
-        app:layout_constraintStart_toStartOf="@+id/textViewEnterDeadline"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEnterDeadline"
+        app:layout_constraintEnd_toEndOf="@+id/editTextMissionHours"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="@+id/editTextMissionHours"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDeadline"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -62,14 +63,27 @@
         android:background="@drawable/button_background"/>
 
     <TextView
-        android:id="@+id/textViewEnterDeadline"
-        android:layout_width="402dp"
-        android:layout_height="52dp"
+        android:id="@+id/textViewDeadline"
+        android:layout_width="226dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="12dp"
+        android:text="Selected date: "
+        android:textSize="17sp"
+        app:layout_constraintStart_toEndOf="@+id/buttonPickDate"
+        app:layout_constraintTop_toTopOf="@+id/buttonPickDate" />
+
+    <Button
+        android:id="@+id/buttonPickDate"
+        android:layout_width="143dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:layout_marginTop="36dp"
-        android:text="Click to enter Deadline"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextMissionHours"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:background="@drawable/button_background"
+        android:text="Pick  Date"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/editTextMissionHours"
         app:layout_constraintTop_toBottomOf="@+id/editTextMissionHours" />
 
