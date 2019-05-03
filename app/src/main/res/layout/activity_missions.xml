@@ -11,17 +11,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="800dp"
-        android:layout_height="161dp"
-        android:contentDescription="@string/todo1"
-        android:src="@drawable/screen_margins"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="0dp" />
+        <TextView
+            android:id="@+id/textViewMissionDeadlines"
+            android:layout_width="198dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Mission Deadlines:"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/listViewOfMissions"
+            app:layout_constraintEnd_toEndOf="@+id/listViewOfMissions"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textViewMissionNames" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="800dp"
+            android:layout_height="161dp"
+            android:contentDescription="@string/todo1"
+            android:src="@drawable/screen_margins"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.567"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="0dp" />
 
         <ImageView
             android:id="@+id/imageView4"
@@ -49,38 +64,39 @@
             app:srcCompat="@drawable/icon_2"
             tools:ignore="ContentDescription,HardcodedText" />
 
-    <TextView
-        android:id="@+id/textViewTitle"
-        android:layout_width="126dp"
-        android:layout_height="79dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="250dp"
-        android:layout_marginRight="250dp"
-        android:width="120dp"
-        android:height="100dp"
-        android:gravity="top"
-        android:text="@string/GTJD"
-        android:textSize="50sp"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:text="@string/GTJD" />
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="215dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="90dp"
-        android:width="60dp"
-        android:height="30dp"
-        android:text="@string/Get_The_Job_Done"
-        android:textSize="25sp"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="@+id/textViewTitle"
-        app:layout_constraintStart_toStartOf="@+id/textViewTitle"
-        app:layout_constraintTop_toTopOf="@+id/textViewTitle"
-        tools:ignore="MissingConstraints"
-        tools:text="Get The Job Done!" />
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="126dp"
+            android:layout_height="79dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="250dp"
+            android:layout_marginRight="250dp"
+            android:width="120dp"
+            android:height="100dp"
+            android:gravity="top"
+            android:text="@string/GTJD"
+            android:textSize="50sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:text="@string/GTJD" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="215dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="90dp"
+            android:width="60dp"
+            android:height="30dp"
+            android:text="@string/Get_The_Job_Done"
+            android:textSize="25sp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/textViewTitle"
+            app:layout_constraintStart_toStartOf="@+id/textViewTitle"
+            app:layout_constraintTop_toTopOf="@+id/textViewTitle"
+            tools:ignore="MissingConstraints"
+            tools:text="Get The Job Done!" />
 
         <Button
             android:id="@+id/buttonAddMission"
@@ -91,23 +107,23 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="168dp"
+            android:background="@drawable/button_background"
             android:text="Add mission"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:textSize="20sp"
-            android:background="@drawable/button_background"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ListView
             android:id="@+id/listViewOfMissions"
             android:layout_width="386dp"
             android:layout_height="336dp"
             android:layout_marginLeft="6dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="60dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.42"
+            app:layout_constraintHorizontal_bias="0.41"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewMissionTitle" />
 
@@ -117,7 +133,7 @@
             android:layout_height="37dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:text="The list of mssion you entered:"
@@ -126,6 +142,15 @@
             app:layout_constraintHorizontal_bias="0.354"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/textViewMissionNames"
+            android:layout_width="128dp"
+            android:layout_height="42dp"
+            android:text="Missions Titels:"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/listViewOfMissions"
+            app:layout_constraintStart_toStartOf="@+id/listViewOfMissions" />
 
     </android.support.constraint.ConstraintLayout>
 

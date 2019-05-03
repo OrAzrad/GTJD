@@ -54,7 +54,8 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
     private void AddMission(String mission_title, String mission_hours, String mission_deadline, String mission_description)
     {
         String id = databaseMissions.push().getKey();
-        Mission mission = new Mission(email, mission_title, mission_hours, mission_deadline, mission_description, id);
+        Mission mission = new Mission(email, mission_title, mission_hours,
+                mission_deadline, mission_description, id);
         databaseMissions.child(id).setValue(mission);
 
         Toast.makeText(getApplicationContext(), "Mission Added", Toast.LENGTH_SHORT).show();
@@ -133,6 +134,8 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         });
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -152,9 +155,11 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         list_of_missions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
                 Mission mission = missions_list.get(position);
-
-
+                String nid = mission.getMission_description();
+                Toast.makeText(getApplicationContext(), nid, Toast.LENGTH_SHORT).show();
             }
         });
 

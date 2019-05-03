@@ -9,22 +9,26 @@
 
     <TextView
         android:id="@+id/textViewMissionTitle"
-        android:layout_width="600dp"
-        android:layout_height="30dp"
+        android:layout_width="119dp"
+        android:layout_height="39dp"
         android:layout_marginTop="40dp"
         android:text="TextView"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp" />
+        tools:layout_editor_absoluteX="29dp" />
 
     <TextView
         android:id="@+id/textViewMissionSubTitle"
-        android:layout_width="599dp"
+        android:layout_width="284dp"
         android:layout_height="25dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="4dp"
         android:text="TextView"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMissionTitle"
-        tools:layout_editor_absoluteX="0dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewMissionTitle"
+        app:layout_constraintTop_toTopOf="@+id/textViewMissionTitle"
         tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>
