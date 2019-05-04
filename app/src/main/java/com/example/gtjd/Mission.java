@@ -4,7 +4,7 @@ public class Mission
 
 {
     String email;
-    String misiion_title;
+    String mission_title;
     String mission_hours;
     String mission_deadline;
     String mission_description;
@@ -20,7 +20,7 @@ public class Mission
                     String mission_description,String mission_id)
     {
         this.email = email;
-        this.misiion_title = mission_title;
+        this.mission_title = mission_title;
         this.mission_hours = mission_hours;
         this.mission_deadline = mission_deadline;
         this.mission_description = mission_description;
@@ -30,8 +30,8 @@ public class Mission
     public String getEmail() {
         return email;
     }
-    public String getMisiion_title() {
-        return misiion_title;
+    public String getMission_title() {
+        return mission_title;
     }
     public String getMission_id() {
         return mission_id;

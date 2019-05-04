@@ -37,7 +37,7 @@ public class MissionsList extends ArrayAdapter<Mission> {
         Mission mission = missions_list.get(position);
 
 
-        textViewTitle.setText(mission.getMisiion_title());
+        textViewTitle.setText(mission.getMission_title());
         textViewSupTitle.setText(mission.getMission_deadline());
 
         return ListViewIrem;
