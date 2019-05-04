@@ -134,6 +134,40 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         });
     }
 
+    private void delete_mission(String mission_id)
+    {
+        DatabaseReference delete_mission = FirebaseDatabase.getInstance().getReference("AddMissionsActivity").child(mission_id);
+        delete_mission.removeValue();
+
+        Toast.makeText(getApplicationContext(), "mission deleted", Toast.LENGTH_SHORT).show();
+
+    }
+    private void mission_data_screen(final Mission mission)
+    {
+        final AlertDialog.Builder mission_data_screen = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+
+
+        final View mission_data_view = inflater.inflate(R.layout.activity__mission_data, null);
+        mission_data_screen.setView(mission_data_view);
+
+        final AlertDialog alertMissionData = mission_data_screen.create();
+        alertMissionData.show();
+
+        Toast.makeText(getApplicationContext(), mission.getMission_id(), Toast.LENGTH_SHORT).show();
+
+
+        final Button delete_mission  =  mission_data_view.findViewById(R.id.buttonDeleteMission);
+
+        delete_mission.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                alertMissionData.dismiss();
+
+                delete_mission(mission.getMission_id());
+            }
+        });}
 
 
     @Override
@@ -146,7 +180,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         findViewById(R.id.buttonAddMission).setOnClickListener(this);
         databaseMissions = FirebaseDatabase.getInstance().getReference("AddMissionsActivity");
 
-        list_of_missions = (ListView) findViewById(R.id.listViewOfMissions);
+        list_of_missions = findViewById(R.id.listViewOfMissions);
         missions_list = new ArrayList<>();
 
 
@@ -158,8 +192,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
 
 
                 Mission mission = missions_list.get(position);
-                String nid = mission.getMission_description();
-                Toast.makeText(getApplicationContext(), nid, Toast.LENGTH_SHORT).show();
+                mission_data_screen(mission);
             }
         });
 

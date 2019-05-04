@@ -8,23 +8,23 @@ public class Mission
     String mission_hours;
     String mission_deadline;
     String mission_description;
-    String id;
+    String mission_id;
 
     public Mission()
     {
 
     }
 
-    public Mission(String email, String misiion_title,
+    public Mission(String email, String mission_title,
                     String mission_hours, String mission_deadline,
-                    String mission_description,String id)
+                    String mission_description,String mission_id)
     {
         this.email = email;
-        this.misiion_title = misiion_title;
+        this.misiion_title = mission_title;
         this.mission_hours = mission_hours;
         this.mission_deadline = mission_deadline;
         this.mission_description = mission_description;
-        this.id = id;
+        this.mission_id = mission_id;
     }
 
     public String getEmail() {
@@ -32,6 +32,9 @@ public class Mission
     }
     public String getMisiion_title() {
         return misiion_title;
+    }
+    public String getMission_id() {
+        return mission_id;
     }
 
     public String getMission_hours() {
@@ -46,7 +49,4 @@ public class Mission
         return mission_description;
     }
 
-    public String getMissionId() {
-        return id;
-    }
 }
