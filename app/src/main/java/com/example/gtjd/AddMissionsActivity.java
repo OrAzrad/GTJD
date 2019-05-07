@@ -154,10 +154,28 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         final AlertDialog alertMissionData = mission_data_screen.create();
         alertMissionData.show();
 
-        Toast.makeText(getApplicationContext(), mission.getMission_id(), Toast.LENGTH_SHORT).show();
+
+
+        String mission_title = mission.getMission_title();
+        String mission_amount_of_hours = mission.getMission_hours();
+        String mission_deadline = mission.getMission_deadline();
+        String mission_description = mission.getMission_description();
 
 
         final Button delete_mission  =  mission_data_view.findViewById(R.id.buttonDeleteMission);
+        final TextView mission_set_title = mission_data_view.findViewById(R.id.textViewMissionSetTitle);
+        final TextView mission_set_amount_of_hours = mission_data_view.findViewById(R.id.textViewMissionSetAmountOfHours);
+        final TextView mission_set_deadline = mission_data_view.findViewById(R.id.textViewMissionSetDeadline);
+        final TextView mission_set_description = mission_data_view.findViewById(R.id.textViewMissionSetDescription);
+
+
+
+        mission_set_title.setText(mission_title);
+        mission_set_amount_of_hours.setText(mission_amount_of_hours);
+        mission_set_deadline.setText(mission_deadline);
+        mission_set_description.setText(mission_description);
+
+
 
         delete_mission.setOnClickListener(new View.OnClickListener() {
             @Override
