@@ -9,6 +9,7 @@ public class Mission
     String mission_deadline;
     String mission_description;
     String mission_id;
+    int mission_progress_hours;
 
     public Mission()
     {
@@ -25,6 +26,7 @@ public class Mission
         this.mission_deadline = mission_deadline;
         this.mission_description = mission_description;
         this.mission_id = mission_id;
+        this.mission_progress_hours = 0;
     }
 
     public String getEmail() {
