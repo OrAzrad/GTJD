@@ -51,11 +51,11 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         return str_to_return;
     }
 
-    private void AddMission(String mission_title, String mission_hours, String mission_deadline, String mission_description)
+    private void AddMission(String mission_title, String mission_hours, String mission_deadline,String mission_emails_amount, String mission_description)
     {
         String id = databaseMissions.push().getKey();
         Mission mission = new Mission(email, mission_title, mission_hours,
-                mission_deadline, mission_description, id);
+                mission_deadline, mission_description,mission_emails_amount, id);
         databaseMissions.child(id).setValue(mission);
 
         Toast.makeText(getApplicationContext(), "Mission Added", Toast.LENGTH_SHORT).show();
@@ -79,6 +79,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         final EditText mission_hours =  create_mission_view.findViewById(R.id.editTextMissionHours);
         final EditText mission_description = create_mission_view.findViewById(R.id.editTextMissionDescription);
         final TextView mission_deadline = create_mission_view.findViewById(R.id.textViewDeadline);
+        final EditText mission_emails_amount = create_mission_view.findViewById(R.id.editTextMissionEmailsPerDay);
 
 
         pick_date.setOnClickListener(new View.OnClickListener() {
@@ -117,6 +118,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
                 String mission_hours_str = GetString(mission_hours);
                 String mission_deadline_str = deadline;
                 String mission_description_str = GetString(mission_description);
+                String mission_emails_amount_str = GetString(mission_emails_amount);
 
 
 
@@ -127,7 +129,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
                 }
                 else
                     {
-                    AddMission(mission_title_str, mission_hours_str, mission_deadline_str, mission_description_str);
+                    AddMission(mission_title_str, mission_hours_str, mission_deadline_str, mission_emails_amount_str, mission_description_str);
                     alertDialog.dismiss();
                     }
             }

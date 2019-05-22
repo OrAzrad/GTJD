@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity implements  View.OnClickListener {
 
-    FirebaseAuth mAuth;
+    FirebaseAuth my_auth;
     EditText email,password;
     ProgressBar progress_bar;
 
@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity implements  View.OnClickLis
         }
 
         progress_bar.setVisibility(View.VISIBLE);
-        mAuth.signInWithEmailAndPassword(email_str, password_str).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        my_auth.signInWithEmailAndPassword(email_str, password_str).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())
@@ -87,7 +87,7 @@ public class LoginActivity extends AppCompatActivity implements  View.OnClickLis
         findViewById(R.id.textViewSignUp).setOnClickListener(this);
         findViewById(R.id.buttonLogin).setOnClickListener(this);
 
-        mAuth = FirebaseAuth.getInstance();
+        my_auth = FirebaseAuth.getInstance();
 
         email = findViewById(R.id.editTextEmail);
         password = findViewById(R.id.editTextPassword);

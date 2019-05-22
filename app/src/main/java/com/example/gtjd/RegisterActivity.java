@@ -20,7 +20,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText email, password, confirm_password;
     ProgressBar progress_bar;
-    private FirebaseAuth mAuth;
+    private FirebaseAuth my_auth;
 
 
     public String GetString(EditText str){
@@ -63,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         progress_bar.setVisibility(View.VISIBLE);
-        mAuth.createUserWithEmailAndPassword(email_str, password_str)
+        my_auth.createUserWithEmailAndPassword(email_str, password_str)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -100,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
         confirm_password = findViewById(R.id.editTextConfirm_password);
         progress_bar = findViewById(R.id.progress_bar);
 
-        mAuth = FirebaseAuth.getInstance();
+        my_auth = FirebaseAuth.getInstance();
 
         findViewById(R.id.Regisrer).setOnClickListener(new View.OnClickListener() {
             @Override

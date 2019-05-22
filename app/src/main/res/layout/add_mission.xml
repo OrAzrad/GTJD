@@ -26,14 +26,14 @@
         android:id="@+id/editTextMissionDescription"
         android:layout_width="414dp"
         android:layout_height="155dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="Write a short description about your mission"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="@+id/editTextMissionHours"
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="@+id/editTextMissionHours"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDeadline"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMissionEmailsPerDay"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -47,6 +47,20 @@
         app:layout_constraintEnd_toEndOf="@+id/editTextMissionName"
         app:layout_constraintStart_toStartOf="@+id/editTextMissionName"
         app:layout_constraintTop_toBottomOf="@+id/editTextMissionName"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editTextMissionEmailsPerDay"
+        android:layout_width="462dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="132dp"
+        android:ems="10"
+        android:hint="Enter how much emails per day you want as a reminder"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/editTextMissionHours"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="@+id/editTextMissionHours"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMissionHours"
         tools:ignore="MissingConstraints" />
 
     <Button
