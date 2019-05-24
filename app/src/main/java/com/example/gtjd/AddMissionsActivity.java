@@ -51,13 +51,18 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         return str_to_return;
     }
 
-    private void AddMission(String mission_title, String mission_hours, String mission_deadline,String mission_emails_amount, String mission_description)
+    private void AddMission(String mission_title, String mission_hours, String mission_deadline,
+                            String mission_emails_amount, String mission_description)
     {
+        //Insert new null value in databaseMissions AND get his key in the same action
         String id = databaseMissions.push().getKey();
+        //Create a new Mission object by the values that user enter
+        //Entries are drawn from a AddMissionScreen function and insert into this function
         Mission mission = new Mission(email, mission_title, mission_hours,
                 mission_deadline, mission_description,mission_emails_amount, id);
+        //Push new mission into databaseMissions
         databaseMissions.child(id).setValue(mission);
-
+        //Write a short update to User
         Toast.makeText(getApplicationContext(), "Mission Added", Toast.LENGTH_SHORT).show();
     }
 
@@ -85,7 +90,6 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         pick_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 calendar = Calendar.getInstance();
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
                 int month = calendar.get(Calendar.MONTH);
@@ -135,14 +139,17 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
             }
         });
     }
-
-    private void delete_mission(String mission_id)
+    //Function that delete mission from Firebase DB AddmissionsActivity
+    private void DeleteMission(String mission_id)
     {
-        DatabaseReference delete_mission = FirebaseDatabase.getInstance().getReference("AddMissionsActivity").child(mission_id);
-        delete_mission.removeValue();
-
+        //Goes into our Firebase DB and goes inside the table "AddMissionsActivity" and pick the Key title(id)
+        // of the mission that suppose to be delete
+        DatabaseReference get_mission_to_delete = FirebaseDatabase.getInstance().
+                getReference("AddMissionsActivity").child(mission_id);
+        //Delete mission By remove her Key Title
+        get_mission_to_delete.removeValue();
+        //write a short Update to User
         Toast.makeText(getApplicationContext(), "mission deleted", Toast.LENGTH_SHORT).show();
-
     }
     private void mission_data_screen(final Mission mission)
     {
@@ -185,7 +192,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
 
                 alertMissionData.dismiss();
 
-                delete_mission(mission.getMission_id());
+                DeleteMission(mission.getMission_id());
             }
         });}
 
@@ -221,31 +228,37 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     protected void onStart() {
+        //As soon as the screen opens
         super.onStart();
-
+        //databaseMissions is variable that represents the DB in Firebase
+        //Adds a built-in function that causes it to run in the loop for every row in DB
         databaseMissions.addValueEventListener(new ValueEventListener() {
             @Override
+            //Once there is a change in the DB or app was opened
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 missions_list.clear();
-
+                //For each mission in DB
                 for(DataSnapshot mission_snapshot: dataSnapshot.getChildren())
                 {
+                    //Get mission
                     Mission mission = mission_snapshot.getValue(Mission.class);
-
+                    //Checks if the email address of the task feeder is the same as the user's email address
                     if(mission.getEmail().equals(email))
                     {
+                        //Add mission to mission_list
                         missions_list.add(mission);
                     }
                 }
-
+                //Insert user mission into a presentation of row in missions ListView
                 MissionsList adapter = new MissionsList(AddMissionsActivity.this ,missions_list);
+                //Add mission row to ListView top
                 list_of_missions.setAdapter(adapter);
             }
-
+            //Built-in function as part of using addValueEventListener
+            //This function do nothing
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
     }
