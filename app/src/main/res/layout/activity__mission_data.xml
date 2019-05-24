@@ -10,13 +10,39 @@
         android:id="@+id/buttonDeleteMission"
         android:layout_width="180dp"
         android:layout_height="58dp"
-        android:layout_marginTop="430dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
+        android:layout_marginTop="492dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginRight="76dp"
         android:background="@drawable/button_background2"
         android:text="Delete Mission"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonUpdateMission"
+        android:layout_width="180dp"
+        android:layout_height="58dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginRight="88dp"
+        android:background="@drawable/button_background"
+        android:text="Update mission"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDeleteMission"
+        app:layout_constraintTop_toTopOf="@+id/buttonDeleteMission" />
+
+    <Button
+        android:id="@+id/buttonUpdateProgressHours"
+        android:layout_width="180dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:background="@drawable/button_background"
+        android:text="Update Progres hours"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/editTextMissionProgressHours"
+        app:layout_constraintTop_toTopOf="@+id/editTextMissionProgressHours" />
+
 
     <TextView
         android:id="@+id/textViewMissionTitle"
@@ -69,37 +95,87 @@
         android:id="@+id/textViewMissionDeadlines"
         android:layout_width="181dp"
         android:layout_height="43dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:text="Mission deadline:"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewMissionProggressHoures"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMissionProgressHours" />
+
+    <TextView
+        android:id="@+id/textViewMissionProggressHoures"
+        android:layout_width="404dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="8dp"
+        android:text="Mission Hours that you have worked:"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textViewMissionHours"
         app:layout_constraintTop_toBottomOf="@+id/textViewMissionHours" />
+
+    <EditText
+        android:id="@+id/editTextMissionProgressHours"
+        android:layout_width="335dp"
+        android:layout_height="0dp"
+        android:ems="10"
+        android:hint="Enter hours you've invested"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@+id/textViewMissionProggressHoures"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMissionProggressHoures"
+        tools:ignore="MissingConstraints" />
+
+
+    <TextView
+        android:id="@+id/textViewMissionSetProgressHoures"
+        android:layout_width="154dp"
+        android:layout_height="25sp"
+        android:text="0"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewMissionProggressHoures"
+        app:layout_constraintTop_toTopOf="@+id/textViewMissionProggressHoures" />
+
+
 
     <TextView
         android:id="@+id/textViewMissionSetDeadline"
         android:layout_width="154dp"
         android:layout_height="29dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:text="Mission Set Text"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textViewMissionDeadlines"
         app:layout_constraintTop_toTopOf="@+id/textViewMissionDeadlines" />
 
     <TextView
-        android:id="@+id/textViewMissionDescription"
-        android:layout_width="207dp"
+        android:id="@+id/textViewMissionEmailsPerDay"
+        android:layout_width="247dp"
         android:layout_height="43dp"
-        android:layout_marginTop="24dp"
-        android:text="Mission Description:"
+        android:layout_marginTop="15dp"
+        android:text="Email reminders per Day:"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textViewMissionHours"
         app:layout_constraintTop_toBottomOf="@+id/textViewMissionDeadlines" />
 
     <TextView
+        android:id="@+id/textViewMissionSetEmailsAmount"
+        android:layout_width="154dp"
+        android:layout_height="0dp"
+        android:text="3"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewMissionEmailsPerDay"
+        app:layout_constraintTop_toTopOf="@+id/textViewMissionEmailsPerDay" />
+
+    <TextView
+        android:id="@+id/textViewMissionDescription"
+        android:layout_width="207dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="8dp"
+        android:text="Mission Description:"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewMissionHours"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMissionEmailsPerDay" />
+
+    <TextView
         android:id="@+id/textViewMissionSetDescription"
-        android:layout_width="311dp"
-        android:layout_height="85dp"
+        android:layout_width="340dp"
+        android:layout_height="127dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:text="Mission Set Text"

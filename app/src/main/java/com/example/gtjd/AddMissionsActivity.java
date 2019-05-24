@@ -172,6 +172,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
 
 
         final Button delete_mission  =  mission_data_view.findViewById(R.id.buttonDeleteMission);
+        final Button update_mission = mission_data_view.findViewById(R.id.buttonUpdateMission);
         final TextView mission_set_title = mission_data_view.findViewById(R.id.textViewMissionSetTitle);
         final TextView mission_set_amount_of_hours = mission_data_view.findViewById(R.id.textViewMissionSetAmountOfHours);
         final TextView mission_set_deadline = mission_data_view.findViewById(R.id.textViewMissionSetDeadline);
@@ -194,10 +195,36 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
 
                 DeleteMission(mission.getMission_id());
             }
-        });}
+        });
+
+        update_mission.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                alertMissionData.dismiss();
+                update_data_screen(mission);
 
 
-    @Override
+            }
+        });
+
+    }
+
+    private void update_data_screen(final Mission mission) {
+        final AlertDialog.Builder mission_data_screen = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+
+
+        final View mission_update_data_view = inflater.inflate(R.layout.activity_update_mission_data, null);
+        mission_data_screen.setView(mission_update_data_view);
+
+        final AlertDialog alertMissionData = mission_data_screen.create();
+        alertMissionData.show();
+    }
+
+
+
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_missions);
