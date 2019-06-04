@@ -128,9 +128,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
 
                 if(mission_title_str.length() == 0 ||
                         mission_hours_str.length() == 0 )
-                {
-                    Toast.makeText(getApplicationContext(), "One of the fields is empty", Toast.LENGTH_SHORT).show();
-                }
+                { Toast.makeText(getApplicationContext(), "One of the fields is empty", Toast.LENGTH_SHORT).show(); }
                 else
                     {
                     AddMission(mission_title_str, mission_hours_str, mission_deadline_str, mission_emails_amount_str, mission_description_str);
@@ -169,6 +167,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         String mission_amount_of_hours = mission.getMission_hours();
         String mission_deadline = mission.getMission_deadline();
         String mission_description = mission.getMission_description();
+        int mission_emails_amount = mission.getMission_emails_amount();
 
 
         final Button delete_mission  =  mission_data_view.findViewById(R.id.buttonDeleteMission);
@@ -177,13 +176,14 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         final TextView mission_set_amount_of_hours = mission_data_view.findViewById(R.id.textViewMissionSetAmountOfHours);
         final TextView mission_set_deadline = mission_data_view.findViewById(R.id.textViewMissionSetDeadline);
         final TextView mission_set_description = mission_data_view.findViewById(R.id.textViewMissionSetDescription);
-
+        final TextView mission_set_emails_amount = mission_data_view.findViewById(R.id.textViewMissionSetEmailsAmount);
 
 
         mission_set_title.setText(mission_title);
         mission_set_amount_of_hours.setText(mission_amount_of_hours);
         mission_set_deadline.setText(mission_deadline);
         mission_set_description.setText(mission_description);
+        mission_set_emails_amount.setText(Integer.toString(mission_emails_amount));
 
 
 
@@ -220,6 +220,78 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
 
         final AlertDialog alertMissionData = mission_data_screen.create();
         alertMissionData.show();
+
+        final EditText mission_title = mission_update_data_view.findViewById(R.id.editTextMissionName);
+        mission_title.setText(mission.getMission_title());
+
+        final EditText mission_amount_of_hours = mission_update_data_view.findViewById(R.id.editTextMissionHours);
+        mission_amount_of_hours.setText(mission.getMission_hours());
+
+
+        final TextView mission_deadline = mission_update_data_view.findViewById(R.id.textViewDeadline);
+        mission_deadline.setText("Selected date: " + mission.getMission_deadline());
+
+
+        final EditText mission_emails_amount = mission_update_data_view.findViewById(R.id.editTextMissionEmailsPerDay);
+        mission_emails_amount.setText(Integer.toString(mission.getMission_emails_amount()));
+
+        final EditText mission_description = mission_update_data_view.findViewById(R.id.editTextMissionDescription);
+        mission_description.setText(mission.getMission_description());
+
+        Button pick_date = mission_update_data_view.findViewById(R.id.buttonPickDate);
+        pick_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calendar = Calendar.getInstance();
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                int month = calendar.get(Calendar.MONTH);
+                int year = calendar.get(Calendar.YEAR);
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(AddMissionsActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+
+                                monthOfYear = monthOfYear+1;
+                                deadline =  dayOfMonth + "/" + monthOfYear + "/" + year;
+                                mission_deadline.setText("Selected date: " + deadline);
+
+
+                            }
+                        }, year, month, day);
+                datePickerDialog.show();
+
+            }
+        });
+
+        Button updaete_button = mission_update_data_view.findViewById(R.id.buttonUpdateMissionData);
+
+        updaete_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String mission_title_str = GetString(mission_title);
+                String mission_hours_str = GetString(mission_amount_of_hours);
+                String mission_deadline_str = deadline;
+                String mission_description_str = GetString(mission_description);
+                String mission_emails_amount_str = GetString(mission_emails_amount);
+
+
+
+                if(mission_title_str.length() == 0 ||
+                        mission_hours_str.length() == 0 )
+                { Toast.makeText(getApplicationContext(), "One of the fields is empty", Toast.LENGTH_SHORT).show(); }
+                else
+                {
+                    DeleteMission(mission.getMission_id());
+                    AddMission(mission_title_str, mission_hours_str, mission_deadline_str, mission_emails_amount_str, mission_description_str);
+                    alertMissionData.dismiss();
+                }
+            }
+        });
+
+
     }
 
 
