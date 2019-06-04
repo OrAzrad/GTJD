@@ -14,16 +14,17 @@
         <TextView
             android:id="@+id/textViewMissionDeadlines"
             android:layout_width="198dp"
-            android:layout_height="42dp"
+            android:layout_height="37dp"
             android:layout_marginStart="60dp"
             android:layout_marginLeft="60dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
+            android:layout_marginBottom="4dp"
             android:text="Mission Deadlines:"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/listViewOfMissions"
             app:layout_constraintEnd_toEndOf="@+id/listViewOfMissions"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.933"
             app:layout_constraintStart_toEndOf="@+id/textViewMissionNames" />
 
         <ImageView
@@ -116,9 +117,10 @@
 
         <ListView
             android:id="@+id/listViewOfMissions"
-            android:layout_width="386dp"
-            android:layout_height="336dp"
-            android:layout_marginLeft="6dp"
+            android:layout_width="454dp"
+            android:layout_height="266dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="60dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
@@ -136,7 +138,7 @@
             android:layout_marginTop="28dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="The list of mssion you entered:"
+            android:text="The list of missions you have entered:"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.354"
@@ -151,6 +153,18 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/listViewOfMissions"
             app:layout_constraintStart_toStartOf="@+id/listViewOfMissions" />
+
+        <TextView
+            android:id="@+id/textViewexplantion"
+            android:layout_width="477dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="68dp"
+            android:text="In order to see mission deatails press on mission from list"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/listViewOfMissions"
+            app:layout_constraintHorizontal_bias="0.608"
+            app:layout_constraintStart_toStartOf="@+id/listViewOfMissions"
+            app:layout_constraintTop_toBottomOf="@+id/listViewOfMissions" />
 
     </android.support.constraint.ConstraintLayout>
 

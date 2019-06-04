@@ -101,5 +101,15 @@
         app:layout_constraintStart_toStartOf="@+id/editTextMissionHours"
         app:layout_constraintTop_toBottomOf="@+id/editTextMissionHours" />
 
+    <TextView
+        android:id="@+id/textViewempty"
+        android:layout_width="59dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text=" "
+        app:layout_constraintEnd_toEndOf="@+id/buttonUpdateMissionData"
+        app:layout_constraintStart_toStartOf="@+id/buttonUpdateMissionData"
+        app:layout_constraintTop_toBottomOf="@+id/buttonUpdateMissionData" />
+
 
 </android.support.constraint.ConstraintLayout>

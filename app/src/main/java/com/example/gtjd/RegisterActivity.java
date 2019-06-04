@@ -52,8 +52,8 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        if (password_str.length() < 7){
-            password.setError("Password must contain at least 7 characters");
+        if (password_str.length() < 8){
+            password.setError("Password should contain at least 8 characters");
             password.requestFocus();
             return;
         }

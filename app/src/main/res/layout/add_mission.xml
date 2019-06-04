@@ -96,9 +96,19 @@
         android:layout_marginLeft="4dp"
         android:layout_marginTop="36dp"
         android:background="@drawable/button_background"
-        android:text="Pick  Date"
+        android:text="Pick deadline"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/editTextMissionHours"
         app:layout_constraintTop_toBottomOf="@+id/editTextMissionHours" />
+
+    <TextView
+        android:id="@+id/textViewempty"
+        android:layout_width="59dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text=" "
+        app:layout_constraintEnd_toEndOf="@+id/buttonCreateMission"
+        app:layout_constraintStart_toStartOf="@+id/buttonCreateMission"
+        app:layout_constraintTop_toBottomOf="@+id/buttonCreateMission" />
 
 </android.support.constraint.ConstraintLayout>
