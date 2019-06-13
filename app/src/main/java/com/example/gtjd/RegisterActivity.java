@@ -57,6 +57,18 @@ public class RegisterActivity extends AppCompatActivity {
             password.requestFocus();
             return;
         }
+        if (password_str.contains("[a-zA-Z]"))
+        {
+            password.setError("Password should contain a capital letter and regular letter");
+            password.requestFocus();
+            return;
+        }
+        if(password_str.contains("[0-9]+"))
+        {
+            password.setError("Password should contain number");
+            password.requestFocus();
+            return;
+        }
         if (!password_str.equals(confirm_password_str)) {
             confirm_password.setError("Password's are different");
             return;

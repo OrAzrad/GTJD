@@ -266,9 +266,9 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
             }
         });
 
-        Button updaete_button = mission_update_data_view.findViewById(R.id.buttonUpdateMissionData);
+        Button update_button = mission_update_data_view.findViewById(R.id.buttonUpdateMissionData);
 
-        updaete_button.setOnClickListener(new View.OnClickListener() {
+        update_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String mission_title_str = GetString(mission_title);
