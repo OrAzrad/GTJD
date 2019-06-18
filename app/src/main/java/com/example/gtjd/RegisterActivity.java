@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,6 +24,9 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText email, password, confirm_password;
     ProgressBar progress_bar;
     private FirebaseAuth my_auth;
+    Pattern pattern_1 = Pattern.compile(".*[a-z]+.*");
+    Pattern pattern_2 = Pattern.compile(".*[A-Z]+.*");
+    Pattern pattern_3 = Pattern.compile(".*[0-9]+.*");
 
 
     public String GetString(EditText str){
@@ -37,6 +43,9 @@ public class RegisterActivity extends AppCompatActivity {
         String email_str = GetString(email);
         String password_str =   GetString(password);
         String confirm_password_str =   GetString(confirm_password);
+        Matcher matcher_1 = pattern_1.matcher(password_str);
+        Matcher matcher_2 = pattern_2.matcher(password_str);
+        Matcher matcher_3 = pattern_3.matcher(password_str);
 
 
         if(email_str.length() == 0)
@@ -57,15 +66,21 @@ public class RegisterActivity extends AppCompatActivity {
             password.requestFocus();
             return;
         }
-        if (password_str.contains("[a-zA-Z]"))
+        if (!matcher_1.matches())
         {
-            password.setError("Password should contain a capital letter and regular letter");
+            password.setError("Password should contain at least one letter");
             password.requestFocus();
             return;
         }
-        if(password_str.contains("[0-9]+"))
+        if (!matcher_2.matches())
         {
-            password.setError("Password should contain number");
+            password.setError("Password should contain at least one CAPITAL letter");
+            password.requestFocus();
+            return;
+        }
+        if (!matcher_3.matches())
+        {
+            password.setError("Password should contain at least one number");
             password.requestFocus();
             return;
         }

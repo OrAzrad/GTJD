@@ -95,12 +95,14 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
                 int month = calendar.get(Calendar.MONTH);
                 int year = calendar.get(Calendar.YEAR);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(AddMissionsActivity.this,
+                final DatePickerDialog datePickerDialog = new DatePickerDialog(AddMissionsActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
 
                             @Override
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
+
+
 
                                 monthOfYear = monthOfYear+1;
                                 deadline =  dayOfMonth + "/" + monthOfYear + "/" + year;
@@ -110,6 +112,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
                             }
                         }, year, month, day);
                 datePickerDialog.show();
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
 
             }
         });
@@ -131,9 +134,12 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
                 { Toast.makeText(getApplicationContext(), "One of the fields is empty", Toast.LENGTH_SHORT).show(); }
                 else
                     {
+                    if(mission_title_str.length() > 30 )
+                    {  Toast.makeText(getApplicationContext(), "Title should be 30 chars at max", Toast.LENGTH_SHORT).show(); }
+                    else{
                     AddMission(mission_title_str, mission_hours_str, mission_deadline_str, mission_emails_amount_str, mission_description_str);
                     alertDialog.dismiss();
-                    }
+                    }}
             }
         });
     }
