@@ -3,6 +3,7 @@ package com.example.gtjd;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -91,6 +92,7 @@ public class LoginActivity extends AppCompatActivity implements  View.OnClickLis
 
         findViewById(R.id.textViewSignUp).setOnClickListener(this);
         findViewById(R.id.buttonLogin).setOnClickListener(this);
+        findViewById(R.id.textViewForgotPassword).setOnClickListener(this);
 
         my_auth = FirebaseAuth.getInstance();
 
@@ -106,13 +108,19 @@ public class LoginActivity extends AppCompatActivity implements  View.OnClickLis
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.textViewSignUp:
-                Intent intent = new Intent(this, RegisterActivity.class);
-                startActivity(intent);
+                Intent intent_register = new Intent(this, RegisterActivity.class);
+                startActivity(intent_register);
+                break;
+
+            case R.id.textViewForgotPassword:
+                Intent intent_forgot_password = new Intent(this, ForgotPasswordActivity.class);
+                startActivity(intent_forgot_password);
                 break;
 
             case R.id.buttonLogin:
                 Login(email, password);
                 break;
+
         }
 
     }

@@ -44,6 +44,7 @@
             android:inputType="textPersonName"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.458"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageView"
             tools:ignore="LabelFor,MissingConstraints"
@@ -96,14 +97,14 @@
             android:id="@+id/buttonLogin"
             android:layout_width="324dp"
             android:layout_height="69dp"
-            android:layout_marginTop="192dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/button_background"
             android:text="confirm"
-            app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
-            app:layout_constraintHorizontal_bias="0.666"
-            app:layout_constraintStart_toStartOf="@+id/editTextPassword"
-            app:layout_constraintTop_toTopOf="@+id/editTextPassword"
             android:textSize="20sp"
-            android:background="@drawable/button_background"/>
+            app:layout_constraintEnd_toEndOf="@+id/textViewForgotPassword"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toStartOf="@+id/textViewForgotPassword"
+            app:layout_constraintTop_toBottomOf="@+id/textViewForgotPassword" />
 
         <TextView
             android:id="@+id/textView2"
@@ -155,13 +156,26 @@
             android:id="@+id/textViewSignUp"
             android:layout_width="375dp"
             android:layout_height="40dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="36dp"
             android:text="Not registered yet? Click here to register"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
-            app:layout_constraintHorizontal_bias="0.52"
+            app:layout_constraintHorizontal_bias="0.473"
             app:layout_constraintStart_toStartOf="@+id/editTextPassword"
-            app:layout_constraintTop_toTopOf="@+id/editTextPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+
+
+        <TextView
+            android:id="@+id/textViewForgotPassword"
+            android:layout_width="375dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="108dp"
+            android:text="Did you forget your password? Click here to enter new password"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
+            app:layout_constraintHorizontal_bias="0.473"
+            app:layout_constraintStart_toStartOf="@+id/editTextPassword"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
         <ProgressBar
             android:id="@+id/progress_bar"
