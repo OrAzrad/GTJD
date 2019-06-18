@@ -130,15 +130,17 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
 
 
                 if(mission_title_str.length() == 0 ||
-                        mission_hours_str.length() == 0 )
+                        mission_hours_str.length() == 0  || deadline == null ||
+                        mission_emails_amount_str.length() == 0 || mission_description_str.length() == 0)
                 { Toast.makeText(getApplicationContext(), "One of the fields is empty", Toast.LENGTH_SHORT).show(); }
                 else
                     {
                     if(mission_title_str.length() > 30 )
                     {  Toast.makeText(getApplicationContext(), "Title should be 30 chars at max", Toast.LENGTH_SHORT).show(); }
                     else{
-                    AddMission(mission_title_str, mission_hours_str, mission_deadline_str, mission_emails_amount_str, mission_description_str);
-                    alertDialog.dismiss();
+                        deadline = null;
+                        AddMission(mission_title_str, mission_hours_str, mission_deadline_str, mission_emails_amount_str, mission_description_str);
+                        alertDialog.dismiss();
                     }}
             }
         });
@@ -189,13 +191,10 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         String mission_amount_of_hours = mission.getMission_hours();
         String mission_deadline = mission.getMission_deadline();
         String mission_description = mission.getMission_description();
-
-        int mission_progress_hours = mission.getMission_progress_hours();
-
         int mission_emails_amount = mission.getMission_emails_amount();
-        Log.d("debug", Integer.toString(mission_progress_hours));
+        int mission_progress_hours_int = mission.getMission_progress_hours();
 
-        final EditText hours = mission_data_view.findViewById(R.id.editTextMissionProgressHours);
+        final EditText enter_progress_hours = mission_data_view.findViewById(R.id.editTextMissionProgressHours);
         final Button update_progress_data = mission_data_view.findViewById(R.id.buttonUpdateProgressHours);
         final Button delete_mission  =  mission_data_view.findViewById(R.id.buttonDeleteMission);
         final Button update_mission = mission_data_view.findViewById(R.id.buttonUpdateMission);
@@ -204,23 +203,15 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         final TextView mission_set_deadline = mission_data_view.findViewById(R.id.textViewMissionSetDeadline);
         final TextView mission_set_description = mission_data_view.findViewById(R.id.textViewMissionSetDescription);
         final TextView mission_set_emails_amount = mission_data_view.findViewById(R.id.textViewMissionSetEmailsAmount);
-
-
-        final TextView mission_pro_hours = mission_data_view.findViewById(R.id.textViewMissionSetProgressHoures);
-
-
-
-
-
-
+        final TextView mission_set_progress_hours = mission_data_view.findViewById(R.id.textViewMissionSetProgressHoures);
 
         mission_set_title.setText(mission_title);
         mission_set_amount_of_hours.setText(mission_amount_of_hours);
         mission_set_deadline.setText(mission_deadline);
         mission_set_description.setText(mission_description);
         mission_set_emails_amount.setText(Integer.toString(mission_emails_amount));
+        mission_set_progress_hours.setText(Integer.toString(mission_progress_hours_int));
 
-        mission_pro_hours.setText(Integer.toString(mission_progress_hours));
 
 
 
@@ -230,8 +221,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
 
 
 
-                String progress_hours_str = GetString(hours);
-                hours.getText().clear();
+                String progress_hours_str = GetString(enter_progress_hours);
                 alertMissionData.dismiss();
 
                 int progress_hours = Integer.parseInt(progress_hours_str);
@@ -316,6 +306,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
                             }
                         }, year, month, day);
                 datePickerDialog.show();
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
 
             }
         });

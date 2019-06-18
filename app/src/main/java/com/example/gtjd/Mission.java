@@ -10,7 +10,7 @@ public class Mission
     String mission_description;
     String mission_id;
     int mission_emails_amount;
-    static int mission_progress_hours;
+    int mission_progress_hours;
 
     public Mission()
     {
