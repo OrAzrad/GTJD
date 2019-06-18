@@ -24,10 +24,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
 
 
 public class AddMissionsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -273,7 +276,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
 
 
         final TextView mission_deadline = mission_update_data_view.findViewById(R.id.textViewDeadline);
-        mission_deadline.setText("Selected date: " + mission.getMission_deadline());
+
 
 
         final EditText mission_emails_amount = mission_update_data_view.findViewById(R.id.editTextMissionEmailsPerDay);
@@ -325,14 +328,26 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
 
 
                 if(mission_title_str.length() == 0 ||
-                        mission_hours_str.length() == 0 )
+                        mission_hours_str.length() == 0  || deadline == null ||
+                        mission_emails_amount_str.length() == 0 || mission_description_str.length() == 0)
                 { Toast.makeText(getApplicationContext(), "One of the fields is empty", Toast.LENGTH_SHORT).show(); }
                 else
                 {
+                    if(mission_title_str.length() > 30 )
+                    {  Toast.makeText(getApplicationContext(), "Title should be 30 chars at max", Toast.LENGTH_SHORT).show(); }
+                    else
+                    {
+                     // ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                    // got to correct to update func instead of this            ;
                     DeleteMission(mission.getMission_id());
                     AddMission(mission_title_str, mission_hours_str, mission_deadline_str, mission_emails_amount_str, mission_description_str);
+                    // got to correct to update func instead of this            ;
+                   // ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
                     alertMissionData.dismiss();
-                }
+
+                }}
             }
         });
 
@@ -383,16 +398,26 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
 
                 missions_list.clear();
                 //For each mission in DB
-                for(DataSnapshot mission_snapshot: dataSnapshot.getChildren())
-                {
+                for(DataSnapshot mission_snapshot: dataSnapshot.getChildren()) {
                     //Get mission
                     Mission mission = mission_snapshot.getValue(Mission.class);
-                    //Checks if the email address of the task feeder is the same as the user's email address
-                    if(mission.getEmail().equals(email))
-                    {
-                        //Add mission to mission_list
-                        missions_list.add(mission);
+
+                    String check_deadline = mission.getMission_deadline();
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    Date date_to_check = null;
+                    try {
+                        date_to_check = sdf.parse(check_deadline);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
                     }
+                    Date today = new Date();
+                    if (!(date_to_check.compareTo(today) < 0) && (mission.getMission_progress_hours()) < Integer.parseInt(mission.getMission_hours()))
+                    {
+                        //Checks if the email address of the task feeder is the same as the user's email address
+                        if (mission.getEmail().equals(email)) {
+                            //Add mission to mission_list
+                            missions_list.add(mission);
+                        }}
                 }
                 //Insert user mission into a presentation of row in missions ListView
                 MissionsList adapter = new MissionsList(AddMissionsActivity.this ,missions_list);
