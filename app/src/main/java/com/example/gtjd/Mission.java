@@ -10,7 +10,7 @@ public class Mission
     String mission_description;
     String mission_id;
     int mission_emails_amount;
-    int mission_progress_hours;
+    static int mission_progress_hours;
 
     public Mission()
     {
@@ -19,7 +19,7 @@ public class Mission
 
     public Mission(String email, String mission_title,
                     String mission_hours, String mission_deadline,
-                    String mission_description,String mission_emails_amount,String mission_id)
+                    String mission_description,String mission_emails_amount,String mission_id, int mission_progress_hours)
     {
         this.email = email;
         this.mission_title = mission_title;
@@ -28,7 +28,7 @@ public class Mission
         this.mission_description = mission_description;
         this.mission_emails_amount = Integer.parseInt(mission_emails_amount);
         this.mission_id = mission_id;
-        this.mission_progress_hours = 0;
+        this.mission_progress_hours = mission_progress_hours;
     }
 
     public String getEmail() {
@@ -55,10 +55,10 @@ public class Mission
     }
 
     public int getMission_progress_hours(){return  mission_progress_hours;}
-    public int addMission_progress_hours(int hours)
+
+    public void addMission_progress_hours(int hours)
     {
-        this.mission_progress_hours += hours;
-        return mission_progress_hours;
+        this.mission_progress_hours = this.mission_progress_hours + hours;
     }
 
 }

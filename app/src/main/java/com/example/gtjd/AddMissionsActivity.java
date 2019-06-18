@@ -59,7 +59,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         //Create a new Mission object by the values that user enter
         //Entries are drawn from a AddMissionScreen function and insert into this function
         Mission mission = new Mission(email, mission_title, mission_hours,
-                mission_deadline, mission_description,mission_emails_amount, id);
+                mission_deadline, mission_description,mission_emails_amount, id, 0);
         //Push new mission into databaseMissions
         databaseMissions.child(id).setValue(mission);
         //Write a short update to User
@@ -155,6 +155,23 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         //write a short Update to User
         Toast.makeText(getApplicationContext(), "mission deleted", Toast.LENGTH_SHORT).show();
     }
+
+    private void UpdateMission(Mission mission, int progress_hours)
+    {
+
+        String mission_id = mission.getMission_id();
+        mission.addMission_progress_hours(progress_hours);
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("AddMissionsActivity").child(mission_id);
+
+
+        databaseReference.setValue(mission);
+
+
+        Toast.makeText(getApplicationContext(), "Mission Updated", Toast.LENGTH_SHORT).show();
+
+    }
+
     private void mission_data_screen(final Mission mission)
     {
         final AlertDialog.Builder mission_data_screen = new AlertDialog.Builder(this);
@@ -168,14 +185,18 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         alertMissionData.show();
 
 
-
         String mission_title = mission.getMission_title();
         String mission_amount_of_hours = mission.getMission_hours();
         String mission_deadline = mission.getMission_deadline();
         String mission_description = mission.getMission_description();
+
+        int mission_progress_hours = mission.getMission_progress_hours();
+
         int mission_emails_amount = mission.getMission_emails_amount();
+        Log.d("debug", Integer.toString(mission_progress_hours));
 
-
+        final EditText hours = mission_data_view.findViewById(R.id.editTextMissionProgressHours);
+        final Button update_progress_data = mission_data_view.findViewById(R.id.buttonUpdateProgressHours);
         final Button delete_mission  =  mission_data_view.findViewById(R.id.buttonDeleteMission);
         final Button update_mission = mission_data_view.findViewById(R.id.buttonUpdateMission);
         final TextView mission_set_title = mission_data_view.findViewById(R.id.textViewMissionSetTitle);
@@ -185,12 +206,39 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         final TextView mission_set_emails_amount = mission_data_view.findViewById(R.id.textViewMissionSetEmailsAmount);
 
 
+        final TextView mission_pro_hours = mission_data_view.findViewById(R.id.textViewMissionSetProgressHoures);
+
+
+
+
+
+
+
         mission_set_title.setText(mission_title);
         mission_set_amount_of_hours.setText(mission_amount_of_hours);
         mission_set_deadline.setText(mission_deadline);
         mission_set_description.setText(mission_description);
         mission_set_emails_amount.setText(Integer.toString(mission_emails_amount));
 
+        mission_pro_hours.setText(Integer.toString(mission_progress_hours));
+
+
+
+        update_progress_data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                String progress_hours_str = GetString(hours);
+                hours.getText().clear();
+                alertMissionData.dismiss();
+
+                int progress_hours = Integer.parseInt(progress_hours_str);
+
+                UpdateMission( mission, progress_hours);
+            }
+        });
 
 
         delete_mission.setOnClickListener(new View.OnClickListener() {
