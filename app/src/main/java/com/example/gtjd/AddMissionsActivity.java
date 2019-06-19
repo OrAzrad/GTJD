@@ -225,11 +225,18 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
 
 
                 String progress_hours_str = GetString(enter_progress_hours);
-                alertMissionData.dismiss();
 
-                int progress_hours = Integer.parseInt(progress_hours_str);
-
-                UpdateMissionProgressHours( mission, progress_hours);
+                if (progress_hours_str.length() != 0)
+                {
+                    alertMissionData.dismiss();
+                    int progress_hours = Integer.parseInt(progress_hours_str);
+                    UpdateMissionProgressHours( mission, progress_hours);
+                }
+                else
+                {
+                    enter_progress_hours.setError("No value entered");
+                    enter_progress_hours.requestFocus();
+                }
             }
         });
 

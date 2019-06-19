@@ -10,9 +10,9 @@
         android:id="@+id/buttonDeleteMission"
         android:layout_width="180dp"
         android:layout_height="58dp"
-        android:layout_marginTop="492dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginRight="76dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:background="@drawable/button_background2"
         android:text="Delete Mission"
         android:textSize="15sp"
@@ -21,12 +21,12 @@
 
     <Button
         android:id="@+id/buttonUpdateMission"
-        android:layout_width="180dp"
+        android:layout_width="207dp"
         android:layout_height="58dp"
-        android:layout_marginEnd="88dp"
-        android:layout_marginRight="88dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginRight="112dp"
         android:background="@drawable/button_background"
-        android:text="Update mission"
+        android:text="Update mission details"
         android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/buttonDeleteMission"
         app:layout_constraintTop_toTopOf="@+id/buttonDeleteMission" />
@@ -183,6 +183,16 @@
         app:layout_constraintStart_toEndOf="@+id/textViewMissionDescription"
         app:layout_constraintTop_toTopOf="@+id/textViewMissionDescription" />
 
+    <TextView
+        android:id="@+id/textViewEmpty"
+        android:layout_width="18dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonUpdateMission" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -69,7 +69,7 @@
         android:layout_width="391dp"
         android:layout_height="70dp"
         android:layout_marginTop="32dp"
-        android:text="Update mission"
+        android:text="SAVE"
         app:layout_constraintEnd_toEndOf="@+id/editTextMissionDescription"
         app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="@+id/editTextMissionDescription"
