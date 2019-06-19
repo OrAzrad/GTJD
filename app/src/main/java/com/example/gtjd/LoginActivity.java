@@ -51,8 +51,8 @@ public class LoginActivity extends AppCompatActivity implements  View.OnClickLis
             return;
         }
         //Checks if all password is entered (password must be at least 7 characters long)
-        if (password_str.length() < 7){
-            password.setError("Password must contain at least 7 characters");
+        if (password_str.length() < 8){
+            password.setError("Password must contain at least 8 characters");
             password.requestFocus();
             return;
         }

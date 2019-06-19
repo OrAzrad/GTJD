@@ -40,21 +40,44 @@ public class Mission
     public String getMission_id() {
         return mission_id;
     }
-
     public String getMission_hours() {
         return mission_hours;
     }
-
     public String getMission_deadline() {
         return mission_deadline;
     }
     public int getMission_emails_amount(){return  mission_emails_amount;}
-
     public String getMission_description() {
         return mission_description;
     }
 
     public int getMission_progress_hours(){return  mission_progress_hours;}
+
+    public void setMission_title(String mission_title)
+    {
+         this.mission_title = mission_title;
+    }
+    public void setMission_hours(String mission_hours)
+    {
+        this.mission_hours = mission_hours;
+    }
+    public void setMission_deadline(String mission_deadline)
+    {
+        this.mission_deadline = mission_deadline;
+    }
+    public void setMission_description(String mission_description)
+    {
+        this.mission_description = mission_description;
+    }
+    public void setMission_progress_hours(int mission_progress_hours)
+    {
+        this.mission_progress_hours = mission_progress_hours;
+    }
+    public void setMission_emails_amount(int mission_emails_amount)
+    {
+        this.mission_emails_amount = mission_emails_amount;
+    }
+
 
     public void addMission_progress_hours(int hours)
     {

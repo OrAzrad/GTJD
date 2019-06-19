@@ -70,7 +70,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
     }
 
 
-    private void add_mission_screen()
+    private void AddMissionScreen()
     {
         AlertDialog.Builder create_mission_screen = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -161,7 +161,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
         Toast.makeText(getApplicationContext(), "mission deleted", Toast.LENGTH_SHORT).show();
     }
 
-    private void UpdateMission(Mission mission, int progress_hours)
+    private void UpdateMissionProgressHours(Mission mission, int progress_hours)
     {
 
         String mission_id = mission.getMission_id();
@@ -177,7 +177,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
 
     }
 
-    private void mission_data_screen(final Mission mission)
+    private void MissionDataScreen(final Mission mission)
     {
         final AlertDialog.Builder mission_data_screen = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -229,7 +229,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
 
                 int progress_hours = Integer.parseInt(progress_hours_str);
 
-                UpdateMission( mission, progress_hours);
+                UpdateMissionProgressHours( mission, progress_hours);
             }
         });
 
@@ -249,7 +249,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
             public void onClick(View v) {
 
                 alertMissionData.dismiss();
-                update_data_screen(mission);
+                UpdateDataScreen(mission);
 
 
             }
@@ -257,7 +257,28 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
 
     }
 
-    private void update_data_screen(final Mission mission) {
+    private void UpdateMissionDeatails(final Mission mission,String mission_title, String mission_hours,
+                                       String mission_deadline, String mission_emails_amount, String mission_description)
+    {
+
+
+
+        mission.setMission_title(mission_title);
+        mission.setMission_hours(mission_hours);
+        mission.setMission_deadline(mission_deadline);
+        mission.setMission_emails_amount(Integer.parseInt(mission_emails_amount));
+        mission.setMission_description(mission_description);
+
+        String mission_id = mission.getMission_id();
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("AddMissionsActivity").child(mission_id);
+        databaseReference.setValue(mission);
+        Toast.makeText(getApplicationContext(), "Mission Updated", Toast.LENGTH_SHORT).show();
+
+
+    }
+
+    private void UpdateDataScreen(final Mission mission) {
         final AlertDialog.Builder mission_data_screen = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
 
@@ -337,15 +358,11 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
                     {  Toast.makeText(getApplicationContext(), "Title should be 30 chars at max", Toast.LENGTH_SHORT).show(); }
                     else
                     {
-                     // ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-                    // got to correct to update func instead of this            ;
-                    DeleteMission(mission.getMission_id());
-                    AddMission(mission_title_str, mission_hours_str, mission_deadline_str, mission_emails_amount_str, mission_description_str);
-                    // got to correct to update func instead of this            ;
-                   // ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+                        UpdateMissionDeatails(mission ,mission_title_str, mission_hours_str,
+                                mission_deadline_str, mission_emails_amount_str, mission_description_str);
 
-                    alertMissionData.dismiss();
+                        alertMissionData.dismiss();
 
                 }}
             }
@@ -378,7 +395,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
 
 
                 Mission mission = missions_list.get(position);
-                mission_data_screen(mission);
+                MissionDataScreen(mission);
             }
         });
 
@@ -436,7 +453,7 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.buttonAddMission:
-                add_mission_screen();
+                AddMissionScreen();
                 break;
 
         }
