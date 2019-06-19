@@ -108,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:ems="10"
-            android:hint="Enter 8 chars Password "
+            android:hint="Enter Password "
             android:importantForAutofill="no"
             android:inputType="textPassword"
             android:textSize="25sp"
@@ -149,14 +149,20 @@
 
         <TextView
             android:id="@+id/textViewRegisterOpening"
-            android:layout_width="369dp"
-            android:layout_height="59dp"
+            android:layout_width="438dp"
+            android:layout_height="129dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="96dp"
-            android:text="Please enter your Registration details"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="@+id/textView2"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Please enter your Registration details
+            \n\nNotice password should contain at least one capital letter, one regular letter and one number.
+             \nEach password must contain at least 8 characters)"
+            android:textSize="19sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.518"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textView2"
             tools:ignore="HardcodedText,MissingConstraints"
             tools:text="welcome to GTJD system please log in" />

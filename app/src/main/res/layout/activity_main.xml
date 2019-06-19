@@ -76,7 +76,7 @@
             tools:ignore="ContentDescription,HardcodedText" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textViewLoginOpening"
             android:layout_width="259dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
