@@ -28,7 +28,8 @@
         android:layout_height="155dp"
         android:layout_marginTop="12dp"
         android:ems="10"
-        android:hint="Write a short description about your mission"
+        android:hint="Write a short description about your mission
+        \nfour rows at max and in each row between 5-7 words"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="@+id/editTextMissionEmailsPerDay"
         app:layout_constraintHorizontal_bias="0.466"

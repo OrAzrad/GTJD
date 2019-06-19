@@ -12,7 +12,7 @@
         android:layout_height="75dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:ems="10"
@@ -26,12 +26,13 @@
         android:id="@+id/editTextMissionDescription"
         android:layout_width="414dp"
         android:layout_height="155dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="44dp"
         android:ems="10"
-        android:hint="Write a short description about your mission"
+        android:hint="Write a short description about your mission \nfour rows at max and in each row between 5-7 words"
+
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="@+id/editTextMissionEmailsPerDay"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTextMissionEmailsPerDay"
         app:layout_constraintTop_toBottomOf="@+id/editTextMissionEmailsPerDay"
         tools:ignore="MissingConstraints" />
@@ -40,7 +41,7 @@
         android:id="@+id/editTextMissionHours"
         android:layout_width="399dp"
         android:layout_height="68dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="52dp"
         android:ems="10"
         android:hint="Enter mission amount of hours"
         android:inputType="number"
@@ -53,12 +54,12 @@
         android:id="@+id/editTextMissionEmailsPerDay"
         android:layout_width="421dp"
         android:layout_height="68dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="156dp"
         android:ems="10"
         android:hint="Enter emails reminders per day "
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="@+id/editTextMissionHours"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintStart_toStartOf="@+id/editTextMissionHours"
         app:layout_constraintTop_toBottomOf="@+id/editTextMissionHours"
         tools:ignore="MissingConstraints" />
@@ -110,6 +111,45 @@
         app:layout_constraintEnd_toEndOf="@+id/buttonUpdateMissionData"
         app:layout_constraintStart_toStartOf="@+id/buttonUpdateMissionData"
         app:layout_constraintTop_toBottomOf="@+id/buttonUpdateMissionData" />
+
+    <TextView
+        android:id="@+id/textViewTitleMissionTitle"
+        android:layout_width="145dp"
+        android:layout_height="37dp"
+        android:text="Mission Title:"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextMissionName"
+        app:layout_constraintStart_toStartOf="@+id/editTextMissionName" />
+
+    <TextView
+        android:id="@+id/textViewTitleMissionAmountOfHours"
+        android:layout_width="202dp"
+        android:layout_height="32dp"
+        android:text="Mission Amount Of Hours:"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextMissionHours"
+        app:layout_constraintStart_toStartOf="@+id/editTextMissionHours" />
+
+    <TextView
+        android:id="@+id/textViewTitleMissionEmailsReminders"
+        android:layout_width="248dp"
+        android:layout_height="38dp"
+        android:text="Mission Emails Reminders Per Day:"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextMissionEmailsPerDay"
+        app:layout_constraintStart_toStartOf="@+id/editTextMissionEmailsPerDay" />
+
+
+    <TextView
+        android:id="@+id/textViewTitleMissionDescription"
+        android:layout_width="196dp"
+        android:layout_height="34dp"
+        android:text="Mission Description:"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextMissionDescription"
+        app:layout_constraintStart_toStartOf="@+id/editTextMissionDescription" />
+
+
 
 
 </android.support.constraint.ConstraintLayout>
