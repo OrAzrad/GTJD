@@ -25,10 +25,11 @@ public class LoginActivity extends AppCompatActivity implements  View.OnClickLis
     FirebaseAuth my_auth;
     EditText email,password;
     ProgressBar progress_bar;
-    Pattern pattern_1 = Pattern.compile(".*[a-z]+.*");
-    Pattern pattern_2 = Pattern.compile(".*[A-Z]+.*");
-    Pattern pattern_3 = Pattern.compile(".*[0-9]+.*");
+    Pattern pattern_letter = Pattern.compile(".*[a-z]+.*");
+    Pattern pattern_CAPITAL_letter = Pattern.compile(".*[A-Z]+.*");
+    Pattern pattern_number = Pattern.compile(".*[0-9]+.*");
 
+    //Turns EditText variable to String variable
     public String GetString(EditText str){
 
         String str_to_return;
@@ -36,7 +37,7 @@ public class LoginActivity extends AppCompatActivity implements  View.OnClickLis
         return str_to_return;
     }
 
-    /** Responsible for all user login logins */
+    //Responsible for all user login process
     private void Login(final EditText email, EditText password)
     {
 
@@ -45,9 +46,9 @@ public class LoginActivity extends AppCompatActivity implements  View.OnClickLis
         String password_str = GetString(password);
 
 
-        Matcher matcher_1 = pattern_1.matcher(password_str);
-        Matcher matcher_2 = pattern_2.matcher(password_str);
-        Matcher matcher_3 = pattern_3.matcher(password_str);
+        Matcher matcher_check_letter = pattern_letter.matcher(password_str);
+        Matcher matcher_check_capital_letter = pattern_CAPITAL_letter.matcher(password_str);
+        Matcher matcher_check_number = pattern_number.matcher(password_str);
 
 
         //Check that An email address has been entered
@@ -64,25 +65,28 @@ public class LoginActivity extends AppCompatActivity implements  View.OnClickLis
             email.requestFocus();
             return;
         }
-        //Checks if all password is entered (password must be at least 7 characters long)
+        //Checks if all password is entered (password must be at least 8 characters long)
         if (password_str.length() < 8){
             password.setError("Password must contain at least 8 characters");
             password.requestFocus();
             return;
         }
-        if (!matcher_1.matches())
+        //checks if there is at least one letter in password
+        if (!matcher_check_letter.matches())
         {
             password.setError("Password should contain at least one letter");
             password.requestFocus();
             return;
         }
-        if (!matcher_2.matches())
+        //checks if there is at least one CAPITAL letter in password
+        if (!matcher_check_capital_letter.matches())
         {
             password.setError("Password should contain at least one CAPITAL letter");
             password.requestFocus();
             return;
         }
-        if (!matcher_3.matches())
+        //checks if there is at least one number in password
+        if (!matcher_check_number.matches())
         {
             password.setError("Password should contain at least one number");
             password.requestFocus();
@@ -98,6 +102,7 @@ public class LoginActivity extends AppCompatActivity implements  View.OnClickLis
                 //if login succeeded
                 if(task.isSuccessful())
                 {
+                    //close progress bar
                     progress_bar.setVisibility(View.GONE);
                     //Open next window
                     Intent intent = new Intent(LoginActivity.this, AddMissionsActivity.class);
@@ -108,6 +113,7 @@ public class LoginActivity extends AppCompatActivity implements  View.OnClickLis
                 }
                 else
                 {
+                    //close progress bar
                     progress_bar.setVisibility(View.GONE);
                     //Print to user the message that Firebase sent as a result
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -117,9 +123,12 @@ public class LoginActivity extends AppCompatActivity implements  View.OnClickLis
     }
 
 
+    //when the screen opens this function start to run
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //attach this Activity with his layout file
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.textViewSignUp).setOnClickListener(this);
@@ -128,6 +137,7 @@ public class LoginActivity extends AppCompatActivity implements  View.OnClickLis
 
         my_auth = FirebaseAuth.getInstance();
 
+        //get data from screen
         email = findViewById(R.id.editTextEmail);
         password = findViewById(R.id.editTextPassword);
         progress_bar = findViewById(R.id.progress_bar);
@@ -139,16 +149,20 @@ public class LoginActivity extends AppCompatActivity implements  View.OnClickLis
     @Override
     public void onClick(View v) {
         switch(v.getId()){
+
+            //when user click on textViewSignUp
             case R.id.textViewSignUp:
                 Intent intent_register = new Intent(this, RegisterActivity.class);
                 startActivity(intent_register);
                 break;
 
+            //when user click on textViewForgotPassword
             case R.id.textViewForgotPassword:
                 Intent intent_forgot_password = new Intent(this, ForgotPasswordActivity.class);
                 startActivity(intent_forgot_password);
                 break;
 
+            //when user click on buttonLogin
             case R.id.buttonLogin:
                 Login(email, password);
                 break;
