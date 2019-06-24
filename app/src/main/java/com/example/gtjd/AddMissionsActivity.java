@@ -510,11 +510,19 @@ public class AddMissionsActivity extends AppCompatActivity implements View.OnCli
                         e.printStackTrace();
                     }
 
-                    //create date object
-                    Date today = new Date();
 
-                    //Checks whether mission is already completed or her deadline passed
-                    if (!(date_to_check.compareTo(today) < 0) && (mission.getMission_progress_hours()) < Integer.parseInt(mission.getMission_hours()))
+                    // get a calendar instance, which defaults to "now"
+                    Calendar calendar = Calendar.getInstance();
+
+                    // subtract one day of the date/calendar
+                    calendar.add(Calendar.DAY_OF_YEAR, -1);
+
+                    // now get "yesterday"
+                    Date yesterday = calendar.getTime();
+
+
+                    //Checks whether mission is already completed or her deadline passed (deadline's date is before yesterday's date)
+                    if (!(date_to_check.compareTo(yesterday) < 0) && (mission.getMission_progress_hours()) < Integer.parseInt(mission.getMission_hours()))
                     {
                         //Checks if the email address of the task feeder is the same as the user's email address
                         if (mission.getEmail().equals(email)) {
